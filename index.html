@@ -58,13 +58,30 @@
     }
     
     .hero {
-      background: linear-gradient(rgba(76,175,80,0.8), rgba(76,175,80,0.8)), 
-                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><circle cx="200" cy="150" r="50" fill="%23a5d6a7"/><circle cx="800" cy="100" r="30" fill="%23c8e6c9"/><circle cx="1000" cy="200" r="40" fill="%23a5d6a7"/><path d="M100,500 Q400,300 700,500 T1200,500" stroke="%2381c784" stroke-width="3" fill="none"/></svg>');
+      background: linear-gradient(rgba(76,175,80,0.7), rgba(129,199,132,0.8)), 
+                  url('https://images.unsplash.com/photo-1544776527-6ca8cc2ddc66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
       color: white;
       text-align: center;
       padding: 8rem 0;
       background-size: cover;
       background-position: center;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(76,175,80,0.3);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
     
     .hero-content h1 {
@@ -141,7 +158,39 @@
     }
     
     .about {
-      background: #f8f9fa;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+      position: relative;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      text-align: center;
+    }
+    
+    .about-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
     }
     
     .contact {
@@ -213,10 +262,16 @@
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title">園について</h2>
-      <p style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
-        岡法人保育園は、子どもたち一人ひとりの個性を大切にし、温かい環境の中で健やかな成長をサポートします。
-        経験豊富な保育士が、愛情を込めてお子様をお預かりいたします。
-      </p>
+      <div class="about-content">
+        <div class="about-text">
+          <p>岡法人保育園は、子どもたち一人ひとりの個性を大切にし、温かい環境の中で健やかな成長をサポートします。</p>
+          <p>経験豊富な保育士が、愛情を込めてお子様をお預かりいたします。明るく安全な園舎で、子どもたちが毎日笑顔で過ごせるよう心がけています。</p>
+          <p>私たちは、遊びを通じた学びを大切にし、一人ひとりの発達段階に応じた丁寧な保育を行っています。</p>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="保育園の様子" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -225,31 +280,37 @@
       <h2 class="section-title">保育内容・特徴</h2>
       <div class="features">
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="自然との触れ合い" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">🌱</div>
           <h3>自然との触れ合い</h3>
           <p>園庭での外遊びや野菜栽培を通じて、自然の大切さを学びます。四季を感じながら、のびのびと成長できる環境を提供しています。</p>
         </div>
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="創造性を育む活動" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">🎨</div>
           <h3>創造性を育む活動</h3>
           <p>絵画、工作、音楽活動を通じて、子どもたちの創造性と表現力を育てます。個性を大切にした指導で、才能を伸ばします。</p>
         </div>
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="思いやりの心" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">🤝</div>
           <h3>思いやりの心</h3>
           <p>異年齢交流や集団活動を通じて、協調性や思いやりの心を育みます。友達との関わりの中で社会性を身につけます。</p>
         </div>
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="安全・安心な給食" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">🍎</div>
           <h3>安全・安心な給食</h3>
           <p>栄養士監修の手作り給食で、バランスの取れた食事を提供。アレルギー対応も万全で、安心してお任せいただけます。</p>
         </div>
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="学習の基礎づくり" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">📚</div>
           <h3>学習の基礎づくり</h3>
           <p>遊びを通じた学習で、文字や数字への興味を育てます。小学校入学に向けた準備も丁寧にサポートします。</p>
         </div>
         <div class="feature-card">
+          <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="保護者との連携" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
           <div class="feature-icon">👨‍👩‍👧‍👦</div>
           <h3>保護者との連携</h3>
           <p>定期的な面談や連絡帳を通じて、保護者の皆様と密に連携。お子様の成長を一緒に見守ります。</p>
