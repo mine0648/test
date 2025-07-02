@@ -3,21 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test LP</title>
+  <title>岡法人保育園 - 子どもたちの笑顔を育む</title>
   <style>
-    body { font-family: 'Segoe UI', sans-serif; background: #f7f7f7; margin: 0; padding: 0; }
-    .container { max-width: 500px; margin: 80px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 40px 30px; text-align: center; }
-    h1 { color: #2d3748; margin-bottom: 16px; }
-    p { color: #4a5568; margin-bottom: 32px; }
-    .cta-btn { background: #3182ce; color: #fff; border: none; border-radius: 5px; padding: 14px 32px; font-size: 1.1em; cursor: pointer; transition: background 0.2s; }
-    .cta-btn:hover { background: #225ea8; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Hiragino Sans', 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .nav-menu a:hover {
+      opacity: 0.8;
+    }
+    
+    .hero {
+      background: linear-gradient(rgba(76,175,80,0.8), rgba(76,175,80,0.8)), 
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><circle cx="200" cy="150" r="50" fill="%23a5d6a7"/><circle cx="800" cy="100" r="30" fill="%23c8e6c9"/><circle cx="1000" cy="200" r="40" fill="%23a5d6a7"/><path d="M100,500 Q400,300 700,500 T1200,500" stroke="%2381c784" stroke-width="3" fill="none"/></svg>');
+      color: white;
+      text-align: center;
+      padding: 8rem 0;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    
+    .cta-btn {
+      background: #FF9800;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cta-btn:hover {
+      background: #F57F17;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+    }
+    
+    .section {
+      padding: 4rem 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #4CAF50;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .about {
+      background: #f8f9fa;
+    }
+    
+    .contact {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-item {
+      text-align: center;
+    }
+    
+    .contact-item h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .footer {
+      background: #2E7D32;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Test LPへようこそ！</h1>
-    <p>これはGitHub Pagesで公開するためのシンプルなランディングページ（LP）サンプルです。<br>まずはここから始めてみましょう！</p>
-    <button class="cta-btn" onclick="alert('お問い合わせは準備中です')">お問い合わせ</button>
-  </div>
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">岡法人保育園</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#about">園について</a></li>
+          <li><a href="#features">保育内容</a></li>
+          <li><a href="#contact">アクセス</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>子どもたちの笑顔を育む</h1>
+      <p>岡法人保育園で、お子様の成長を一緒に見守りませんか</p>
+      <a href="#contact" class="cta-btn">見学のお申し込み</a>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">園について</h2>
+      <p style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+        岡法人保育園は、子どもたち一人ひとりの個性を大切にし、温かい環境の中で健やかな成長をサポートします。
+        経験豊富な保育士が、愛情を込めてお子様をお預かりいたします。
+      </p>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <div class="container">
+      <h2 class="section-title">保育内容・特徴</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3>自然との触れ合い</h3>
+          <p>園庭での外遊びや野菜栽培を通じて、自然の大切さを学びます。四季を感じながら、のびのびと成長できる環境を提供しています。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>創造性を育む活動</h3>
+          <p>絵画、工作、音楽活動を通じて、子どもたちの創造性と表現力を育てます。個性を大切にした指導で、才能を伸ばします。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>思いやりの心</h3>
+          <p>異年齢交流や集団活動を通じて、協調性や思いやりの心を育みます。友達との関わりの中で社会性を身につけます。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍎</div>
+          <h3>安全・安心な給食</h3>
+          <p>栄養士監修の手作り給食で、バランスの取れた食事を提供。アレルギー対応も万全で、安心してお任せいただけます。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>学習の基礎づくり</h3>
+          <p>遊びを通じた学習で、文字や数字への興味を育てます。小学校入学に向けた準備も丁寧にサポートします。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍👩‍👧‍👦</div>
+          <h3>保護者との連携</h3>
+          <p>定期的な面談や連絡帳を通じて、保護者の皆様と密に連携。お子様の成長を一緒に見守ります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2 class="section-title" style="color: white;">アクセス・お問い合わせ</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <h3>📍 所在地</h3>
+          <p>〒000-0000<br>
+          岡山県岡山市〇〇区〇〇町1-2-3<br>
+          岡法人保育園</p>
+        </div>
+        <div class="contact-item">
+          <h3>📞 お電話</h3>
+          <p>TEL: 086-000-0000<br>
+          FAX: 086-000-0001<br>
+          受付時間: 平日 7:30-18:30</p>
+        </div>
+        <div class="contact-item">
+          <h3>🕐 開園時間</h3>
+          <p>平日: 7:30-18:30<br>
+          土曜: 7:30-17:00<br>
+          休園日: 日曜・祝日・年末年始</p>
+        </div>
+        <div class="contact-item">
+          <h3>✨ 見学申し込み</h3>
+          <p>随時見学を受け付けております<br>
+          事前にお電話でご予約ください<br>
+          <a href="tel:086-000-0000" class="cta-btn" style="margin-top: 10px;">電話で見学予約</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 岡法人保育園. All rights reserved.</p>
+      <p>子どもたちの笑顔と成長を第一に、安心・安全な保育を提供します</p>
+    </div>
+  </footer>
 </body>
-</html> 
+</html>
