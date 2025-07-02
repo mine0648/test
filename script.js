@@ -1,4 +1,11 @@
-// DEPART Design Agency - Enhanced JavaScript
+/*!
+ * DEPART Design Agency - Enhanced JavaScript
+ * Interactive features for modern portfolio website
+ * 
+ * @author Claude Code
+ * @version 1.0.0
+ * @license MIT
+ */
 
 document.addEventListener('DOMContentLoaded', function() {
   
