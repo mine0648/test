@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>岡法人保育園 - 子どもたちの笑顔を育む</title>
+  <title>DEPART - Good Design, Good Experience</title>
   <style>
     * {
       margin: 0;
@@ -12,210 +12,367 @@
     }
     
     body {
-      font-family: 'Hiragino Sans', 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', 'Hiragino Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
       color: #333;
+      overflow-x: hidden;
     }
     
     .header {
-      background: #4CAF50;
-      color: white;
-      padding: 1rem 0;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
     }
     
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
+      color: #2355D5;
+      text-decoration: none;
     }
     
     .nav-menu {
       display: flex;
       list-style: none;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     
     .nav-menu a {
-      color: white;
+      color: #333;
       text-decoration: none;
-      transition: opacity 0.3s;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
     }
     
     .nav-menu a:hover {
-      opacity: 0.8;
+      color: #2355D5;
+    }
+    
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2355D5;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-menu a:hover::after {
+      width: 100%;
     }
     
     .hero {
-      background: linear-gradient(rgba(76,175,80,0.7), rgba(129,199,132,0.8)), 
-                  url('https://images.unsplash.com/photo-1544776527-6ca8cc2ddc66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
       text-align: center;
-      padding: 8rem 0;
-      background-size: cover;
-      background-position: center;
       position: relative;
+      overflow: hidden;
     }
     
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(76,175,80,0.3);
-      z-index: 1;
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(45deg, rgba(35, 85, 213, 0.1), rgba(35, 85, 213, 0.05));
+      border-radius: 50%;
+      top: -250px;
+      right: -250px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(45deg, rgba(35, 85, 213, 0.08), rgba(35, 85, 213, 0.03));
+      border-radius: 50%;
+      bottom: -150px;
+      left: -150px;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
     
     .hero-content {
+      max-width: 800px;
+      padding: 0 2rem;
       position: relative;
-      z-index: 2;
+      z-index: 10;
     }
     
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    
-    .hero-content p {
+    .hero-subtitle {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      color: #666;
+      margin-bottom: 1rem;
+      font-weight: 300;
     }
     
-    .cta-btn {
-      background: #FF9800;
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      color: #2355D5;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero-catchphrase {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+    
+    .cta-button {
       display: inline-block;
+      background: #2355D5;
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(35, 85, 213, 0.3);
     }
     
-    .cta-btn:hover {
-      background: #F57F17;
+    .cta-button:hover {
+      background: #1a4bb8;
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(255,152,0,0.4);
+      box-shadow: 0 6px 25px rgba(35, 85, 213, 0.4);
     }
     
     .section {
-      padding: 4rem 0;
+      padding: 6rem 0;
     }
     
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 2rem;
     }
     
     .section-title {
+      font-size: 3rem;
+      font-weight: bold;
       text-align: center;
-      font-size: 2.5rem;
       margin-bottom: 3rem;
-      color: #4CAF50;
+      color: #333;
     }
     
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .feature-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    .section-subtitle {
       text-align: center;
-      transition: transform 0.3s;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .feature-card:hover {
+    .works {
+      background: #f8f9ff;
+    }
+    
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .work-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .work-card:hover {
       transform: translateY(-5px);
     }
     
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    .about {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
-      position: relative;
-    }
-    
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-top: 3rem;
-    }
-    
-    .about-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-    
-    .about-image {
-      text-align: center;
-    }
-    
-    .about-image img {
+    .work-image {
       width: 100%;
-      max-width: 500px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      height: 250px;
+      background: linear-gradient(45deg, #2355D5, #4a90e2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
     
-    @media (max-width: 768px) {
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+    .work-content {
+      padding: 1.5rem;
+    }
+    
+    .work-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    
+    .work-desc {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #e6f0ff;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      border-color: #2355D5;
+      box-shadow: 0 10px 40px rgba(35, 85, 213, 0.1);
+    }
+    
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #2355D5;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .service-desc {
+      color: #666;
+      line-height: 1.7;
+    }
+    
+    .blog {
+      background: #f8f9ff;
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .blog-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-3px);
+    }
+    
+    .blog-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .blog-content {
+      padding: 1.5rem;
+    }
+    
+    .blog-date {
+      color: #2355D5;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .blog-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.8rem;
+      color: #333;
+    }
+    
+    .blog-excerpt {
+      color: #666;
+      line-height: 1.6;
     }
     
     .contact {
-      background: #4CAF50;
+      background: #2355D5;
       color: white;
-    }
-    
-    .contact-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .contact-item {
       text-align: center;
     }
     
-    .contact-item h3 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
+    .contact .section-title {
+      color: white;
+    }
+    
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-button {
+      display: inline-block;
+      background: white;
+      color: #2355D5;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-button:hover {
+      background: #f0f8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
     }
     
     .footer {
-      background: #2E7D32;
+      background: #1a1a1a;
       color: white;
       text-align: center;
       padding: 2rem 0;
@@ -226,12 +383,22 @@
         display: none;
       }
       
-      .hero-content h1 {
-        font-size: 2rem;
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-catchphrase {
+        font-size: 1.5rem;
       }
       
       .section-title {
         font-size: 2rem;
+      }
+      
+      .works-grid,
+      .services-grid,
+      .blog-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -239,13 +406,14 @@
 <body>
   <header class="header">
     <div class="nav-container">
-      <div class="logo">岡法人保育園</div>
+      <a href="#" class="logo">DEPART</a>
       <nav>
         <ul class="nav-menu">
-          <li><a href="#about">園について</a></li>
-          <li><a href="#features">保育内容</a></li>
-          <li><a href="#contact">アクセス</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#service">Service</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -253,108 +421,118 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>子どもたちの笑顔を育む</h1>
-      <p>岡法人保育園で、お子様の成長を一緒に見守りませんか</p>
-      <a href="#contact" class="cta-btn">見学のお申し込み</a>
+      <p class="hero-subtitle">Creative Design Agency</p>
+      <h1 class="hero-title">Good Design,<br>Good Experience</h1>
+      <p class="hero-catchphrase">ゆさぶる、体験をつくる。</p>
+      <a href="#works" class="cta-button">制作実績をみる</a>
     </div>
   </section>
 
-  <section id="about" class="section about">
+  <section id="works" class="section works">
     <div class="container">
-      <h2 class="section-title">園について</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>岡法人保育園は、子どもたち一人ひとりの個性を大切にし、温かい環境の中で健やかな成長をサポートします。</p>
-          <p>経験豊富な保育士が、愛情を込めてお子様をお預かりいたします。明るく安全な園舎で、子どもたちが毎日笑顔で過ごせるよう心がけています。</p>
-          <p>私たちは、遊びを通じた学びを大切にし、一人ひとりの発達段階に応じた丁寧な保育を行っています。</p>
+      <h2 class="section-title">Works</h2>
+      <p class="section-subtitle">私たちが手がけた制作実績をご覧ください。お客様のビジネスを成功に導くデザインを提供しています。</p>
+      <div class="works-grid">
+        <div class="work-card">
+          <div class="work-image">Webサイト制作</div>
+          <div class="work-content">
+            <h3 class="work-title">コーポレートサイト</h3>
+            <p class="work-desc">企業のブランドイメージを向上させる、洗練されたコーポレートサイトをデザイン・制作いたします。</p>
+          </div>
         </div>
-        <div class="about-image">
-          <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="保育園の様子" loading="lazy">
+        <div class="work-card">
+          <div class="work-image">ブランディング</div>
+          <div class="work-content">
+            <h3 class="work-title">ブランドアイデンティティ</h3>
+            <p class="work-desc">ロゴからパッケージまで、一貫したブランドイメージを構築し、市場での差別化を図ります。</p>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="work-image">アプリ開発</div>
+          <div class="work-content">
+            <h3 class="work-title">モバイルアプリ</h3>
+            <p class="work-desc">ユーザー体験を重視した、直感的で使いやすいモバイルアプリケーションを開発します。</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="features" class="section">
+  <section id="service" class="section">
     <div class="container">
-      <h2 class="section-title">保育内容・特徴</h2>
-      <div class="features">
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="自然との触れ合い" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">🌱</div>
-          <h3>自然との触れ合い</h3>
-          <p>園庭での外遊びや野菜栽培を通じて、自然の大切さを学びます。四季を感じながら、のびのびと成長できる環境を提供しています。</p>
+      <h2 class="section-title">Service</h2>
+      <p class="section-subtitle">お客様のニーズに合わせた包括的なデザインサービスを提供いたします。</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3 class="service-title">Webデザイン</h3>
+          <p class="service-desc">ユーザビリティとデザイン性を両立した、効果的なWebサイトを制作します。レスポンシブ対応で、あらゆるデバイスで最適な表示を実現。</p>
         </div>
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="創造性を育む活動" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">🎨</div>
-          <h3>創造性を育む活動</h3>
-          <p>絵画、工作、音楽活動を通じて、子どもたちの創造性と表現力を育てます。個性を大切にした指導で、才能を伸ばします。</p>
+        <div class="service-card">
+          <div class="service-icon">📱</div>
+          <h3 class="service-title">UI/UXデザイン</h3>
+          <p class="service-desc">ユーザー中心のデザインアプローチで、直感的で使いやすいインターフェースを設計します。ユーザビリティテストも実施。</p>
         </div>
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="思いやりの心" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">🤝</div>
-          <h3>思いやりの心</h3>
-          <p>異年齢交流や集団活動を通じて、協調性や思いやりの心を育みます。友達との関わりの中で社会性を身につけます。</p>
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3 class="service-title">ブランディング</h3>
+          <p class="service-desc">企業のビジョンと価値観を視覚化し、一貫性のあるブランドアイデンティティを構築します。ロゴからガイドラインまで総合的にサポート。</p>
         </div>
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="安全・安心な給食" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">🍎</div>
-          <h3>安全・安心な給食</h3>
-          <p>栄養士監修の手作り給食で、バランスの取れた食事を提供。アレルギー対応も万全で、安心してお任せいただけます。</p>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title">マーケティング支援</h3>
+          <p class="service-desc">デザインの力でマーケティング効果を最大化。広告クリエイティブからランディングページまで、成果につながるデザインを提供。</p>
         </div>
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="学習の基礎づくり" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">📚</div>
-          <h3>学習の基礎づくり</h3>
-          <p>遊びを通じた学習で、文字や数字への興味を育てます。小学校入学に向けた準備も丁寧にサポートします。</p>
-        </div>
-        <div class="feature-card">
-          <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" alt="保護者との連携" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="feature-icon">👨‍👩‍👧‍👦</div>
-          <h3>保護者との連携</h3>
-          <p>定期的な面談や連絡帳を通じて、保護者の皆様と密に連携。お子様の成長を一緒に見守ります。</p>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="section blog">
+    <div class="container">
+      <h2 class="section-title">Blog</h2>
+      <p class="section-subtitle">デザインのトレンドや制作の舞台裏、クリエイティブなアイデアを発信しています。</p>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-image">デザイントレンド</div>
+          <div class="blog-content">
+            <p class="blog-date">2024.01.15</p>
+            <h3 class="blog-title">2024年のWebデザイントレンド予測</h3>
+            <p class="blog-excerpt">来年注目すべきWebデザインのトレンドを詳しく解説。ミニマリズムからインタラクティブデザインまで...</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-image">制作秘話</div>
+          <div class="blog-content">
+            <p class="blog-date">2024.01.10</p>
+            <h3 class="blog-title">プロジェクト制作の舞台裏</h3>
+            <p class="blog-excerpt">お客様との打ち合わせから完成まで、実際のプロジェクトを通して制作プロセスをご紹介します...</p>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-image">ツール紹介</div>
+          <div class="blog-content">
+            <p class="blog-date">2024.01.05</p>
+            <h3 class="blog-title">効率的なデザインツールの選び方</h3>
+            <p class="blog-excerpt">Figma、Adobe XD、Sketchなど、目的に応じた最適なデザインツールの選択方法を解説...</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section id="contact" class="section contact">
     <div class="container">
-      <h2 class="section-title" style="color: white;">アクセス・お問い合わせ</h2>
-      <div class="contact-info">
-        <div class="contact-item">
-          <h3>📍 所在地</h3>
-          <p>〒000-0000<br>
-          岡山県岡山市〇〇区〇〇町1-2-3<br>
-          岡法人保育園</p>
-        </div>
-        <div class="contact-item">
-          <h3>📞 お電話</h3>
-          <p>TEL: 086-000-0000<br>
-          FAX: 086-000-0001<br>
-          受付時間: 平日 7:30-18:30</p>
-        </div>
-        <div class="contact-item">
-          <h3>🕐 開園時間</h3>
-          <p>平日: 7:30-18:30<br>
-          土曜: 7:30-17:00<br>
-          休園日: 日曜・祝日・年末年始</p>
-        </div>
-        <div class="contact-item">
-          <h3>✨ 見学申し込み</h3>
-          <p>随時見学を受け付けております<br>
-          事前にお電話でご予約ください<br>
-          <a href="tel:086-000-0000" class="cta-btn" style="margin-top: 10px;">電話で見学予約</a></p>
-        </div>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-content">
+        <p>プロジェクトのご相談やお見積もりなど、<br>お気軽にお問い合わせください。</p>
+        <a href="mailto:info@depart.com" class="contact-button">お問い合わせ</a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2024 岡法人保育園. All rights reserved.</p>
-      <p>子どもたちの笑顔と成長を第一に、安心・安全な保育を提供します</p>
+      <p>&copy; 2024 DEPART Inc. All rights reserved.</p>
     </div>
   </footer>
 </body>
