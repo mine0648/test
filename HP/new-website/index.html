@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サングローブ株式会社風 サンプルサイト</title>
+  <title>相川動物園 | 公式ホームページ</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,7 @@
   <header class="g-header">
     <div class="g-header__inner">
       <h1 class="g-header__logo">
-        <a href="#"><img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/common/logo.svg" alt="サングローブ株式会社" width="125" height="23"></a>
+        <a href="#"><img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/animal-2023924_1280.png" alt="相川動物園ロゴ" width="80" height="80"></a>
       </h1>
       <button class="g-header__menu js-modal-toggle" aria-label="メニューを開く">
         <span class="g-header__menu-line"></span>
@@ -20,11 +20,11 @@
       </button>
       <nav class="g-header__nav">
         <ul class="g-header__nav-list">
-          <li><a href="#company">会社概要</a></li>
-          <li><a href="#service">事業内容</a></li>
-          <li><a href="#voice">お客様の声</a></li>
+          <li><a href="#about">動物園について</a></li>
+          <li><a href="#animals">動物紹介</a></li>
+          <li><a href="#voice">来園者の声</a></li>
           <li><a href="#news">お知らせ</a></li>
-          <li><a href="#media">自社メディア</a></li>
+          <li><a href="#access">アクセス</a></li>
           <li><a href="#contact">お問い合わせ</a></li>
         </ul>
       </nav>
@@ -34,39 +34,64 @@
   <main>
     <section class="p-top-visual">
       <div class="p-top-visual__main">
-        <video class="p-top-visual__main-wave-video" muted autoplay loop playsinline poster="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/visual-main-bg-sp.svg">
-          <source src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/movie/wave-kv.mp4" type="video/mp4">
-        </video>
-        <div class="p-top-visual__main-content">
-          <p class="p-top-visual__main-ttl">BEST SOLUTION<br>FOR A FUTURE</p>
-          <p class="p-top-visual__main-sub">――― As Best Creative, Do Everything For a Goal...</p>
-          <h2 class="p-top-visual__main-desc">想像を超えた、最先端の集客支援を提案</h2>
+        <img class="p-top-visual__main-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="動物園の風景" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:1;">
+        <div class="p-top-visual__main-content" style="position:relative;z-index:2;">
+          <p class="p-top-visual__main-ttl">ようこそ、相川動物園へ！</p>
+          <p class="p-top-visual__main-sub">たくさんの動物たちと、感動の出会いを。</p>
+          <h2 class="p-top-visual__main-desc">自然とふれあい、学び、楽しむ場所</h2>
         </div>
       </div>
     </section>
 
+    <section class="p-top-animals" id="animals">
+      <h2>動物紹介</h2>
+      <ul class="p-top-animals__list">
+        <li>
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="ライオン" width="120" height="80">
+          <div>
+            <strong>ライオン</strong>
+            <p>百獣の王。堂々とした姿が人気です。</p>
+          </div>
+        </li>
+        <li>
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" alt="キリン" width="120" height="80">
+          <div>
+            <strong>キリン</strong>
+            <p>首の長い優雅な草食動物。子どもたちに大人気！</p>
+          </div>
+        </li>
+        <li>
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="ゾウ" width="120" height="80">
+          <div>
+            <strong>ゾウ</strong>
+            <p>大きな体とやさしい目が特徴です。</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
     <section class="p-top-voice" id="voice">
-      <h2>お客様の声</h2>
+      <h2>来園者の声</h2>
       <ul class="p-top-voice__list">
         <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー1" width="60" height="60">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="来園者1" width="60" height="60">
           <div>
-            <strong>ワンアップモチベーション 様</strong>
-            <p>心から納得できる仕上がりに感動しました</p>
+            <strong>山田 花子 様</strong>
+            <p>家族で一日中楽しめました！動物たちがとても元気でした。</p>
           </div>
         </li>
         <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー2" width="60" height="60">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="来園者2" width="60" height="60">
           <div>
-            <strong>横浜本牧パーソナルトレーナー 様</strong>
-            <p>お客様からの評判も好評です</p>
+            <strong>佐藤 太郎 様</strong>
+            <p>キリンの餌やり体験が子どもに大好評でした。</p>
           </div>
         </li>
         <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー3" width="60" height="60">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="来園者3" width="60" height="60">
           <div>
-            <strong>Salon de Faire 様</strong>
-            <p>豊富なアイデアの提案に感謝です</p>
+            <strong>鈴木 美咲 様</strong>
+            <p>園内がきれいで、スタッフの方も親切でした。</p>
           </div>
         </li>
       </ul>
@@ -76,36 +101,25 @@
       <h2>お知らせ</h2>
       <ul class="p-top-information__list">
         <li>
-          <strong>2025.3.25</strong> 【御礼】取引社数50,000社突破のお知らせ
+          <strong>2024.7.10</strong> 夏休み特別イベント「夜の動物園」開催決定！
         </li>
         <li>
-          <strong>2025.3.3</strong> 【札幌、仙台、広島支社】3オフィス設立のお知らせ
+          <strong>2024.6.20</strong> 新しいレッサーパンダが仲間入りしました！
         </li>
       </ul>
     </section>
 
-    <section class="p-top-media" id="media">
-      <h2>自社メディア【SUNGROVE】</h2>
-      <ul class="p-top-media__list">
-        <li>
-          <a href="https://www.sungrove.co.jp/line-official-flyer/" target="_blank">
-            <img src="https://www.sungrove.co.jp/wp-content/uploads/2023/12/00-12-300x169.jpg" alt="LINEチラシとは？">
-            <span>LINEチラシとは？機能やメリット・デメリット・無料で使えるか・出稿の流れを解説</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.sungrove.co.jp/line-official-account-plan/" target="_blank">
-            <img src="https://www.sungrove.co.jp/wp-content/uploads/2023/12/00-15-300x169.jpg" alt="LINE公式アカウントの料金プランを解説">
-            <span>LINE公式アカウントの料金プランを解説！コストを抑えるポイントやプランを効果的に選択する方法も紹介</span>
-          </a>
-        </li>
-      </ul>
+    <section class="p-top-access" id="access">
+      <h2>アクセス</h2>
+      <p>〒123-4567 東京都相川市動物園町1-1</p>
+      <p>最寄り駅：相川駅から徒歩15分／駐車場あり</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.9999999999995!2d139.70000000000002!3d35.689500000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b0000000000%3A0x0000000000000000!2z5p2x5Lqs6YO95aSn5a2m!5e0!3m2!1sja!2sjp!4v1620000000000!5m2!1sja!2sjp" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
   </main>
 
   <footer class="g-footer">
     <div class="g-footer__inner">
-      <small>&copy; 2024 サングローブ株式会社風 サンプルサイト</small>
+      <small>&copy; 2024 相川動物園</small>
     </div>
   </footer>
 

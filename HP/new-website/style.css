@@ -1,12 +1,12 @@
 body {
   font-family: 'Poppins', 'Shippori Mincho', 'Playfair Display', sans-serif;
   margin: 0;
-  background: #fff;
-  color: #222;
+  background: #f8fcf4;
+  color: #234d20;
 }
 .g-header {
   background: #fff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #b7e4c7;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -20,7 +20,10 @@ body {
   padding: 10px 20px;
 }
 .g-header__logo img {
-  height: 30px;
+  height: 60px;
+  border-radius: 50%;
+  background: #e9f5e1;
+  border: 2px solid #b7e4c7;
 }
 .g-header__nav-list {
   display: flex;
@@ -31,19 +34,19 @@ body {
 }
 .g-header__nav-list li a {
   text-decoration: none;
-  color: #222;
+  color: #234d20;
   font-weight: 600;
   transition: color 0.2s;
 }
 .g-header__nav-list li a:hover {
-  color: #7bb646;
+  color: #40916c;
 }
 .p-top-visual {
   position: relative;
   width: 100vw;
-  height: 60vh;
-  min-height: 350px;
-  background: #f5f7fa;
+  height: 50vh;
+  min-height: 320px;
+  background: #d8f3dc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,29 +60,67 @@ body {
   align-items: center;
   justify-content: center;
 }
-.p-top-visual__main-wave-video {
+.p-top-visual__main-img {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
+  filter: brightness(0.85) saturate(1.1);
 }
 .p-top-visual__main-content {
   position: relative;
   z-index: 2;
   color: #fff;
   text-align: center;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  text-shadow: 0 2px 8px rgba(60,80,40,0.25);
 }
 .p-top-visual__main-ttl {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 0.5em;
+  letter-spacing: 0.05em;
 }
 .p-top-visual__main-sub {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 1em;
 }
 .p-top-visual__main-desc {
   font-size: 1.5rem;
   font-weight: 600;
+}
+.p-top-animals {
+  background: #fff;
+  padding: 48px 0 32px 0;
+  text-align: center;
+}
+.p-top-animals h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5em;
+}
+.p-top-animals__list {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.p-top-animals__list li {
+  background: #e9f5e1;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(64,145,108,0.08);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  max-width: 260px;
+}
+.p-top-animals__list img {
+  border-radius: 12px;
+  border: 2px solid #b7e4c7;
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
 }
 .p-top-voice {
   background: #f7faf5;
@@ -101,7 +142,7 @@ body {
 .p-top-voice__list li {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(64,145,108,0.06);
   padding: 24px 16px;
   display: flex;
   align-items: center;
@@ -111,7 +152,7 @@ body {
 }
 .p-top-voice__list img {
   border-radius: 50%;
-  border: 2px solid #7bb646;
+  border: 2px solid #b7e4c7;
 }
 .p-top-information {
   background: #fff;
@@ -131,55 +172,31 @@ body {
 }
 .p-top-information__list li {
   padding: 12px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #b7e4c7;
   font-size: 1.1rem;
 }
-.p-top-media {
+.p-top-access {
   background: #f7faf5;
   padding: 48px 0 32px 0;
   text-align: center;
 }
-.p-top-media h2 {
+.p-top-access h2 {
   font-size: 2rem;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
-.p-top-media__list {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.p-top-media__list li {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 16px;
-  min-width: 260px;
-  max-width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.p-top-media__list img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-.p-top-media__list span {
-  font-size: 1rem;
-  color: #222;
+.p-top-access p {
+  font-size: 1.1rem;
+  margin: 0.5em 0;
 }
 .g-footer {
-  background: #222;
+  background: #234d20;
   color: #fff;
   text-align: center;
   padding: 24px 0;
   margin-top: 48px;
 }
 @media (max-width: 900px) {
-  .p-top-voice__list, .p-top-media__list {
+  .p-top-voice__list, .p-top-animals__list {
     flex-direction: column;
     gap: 20px;
     align-items: center;
