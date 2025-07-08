@@ -3,111 +3,259 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サングローブ株式会社風 サンプルサイト</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+  <title>ドクターグリップシリーズ | PILOT</title>
+  <meta name="description" content="ドクターグリップは人間工学に基づき、無理なく握れる軸径を採用。筆記時に肩や腕にかかる筋肉の負担を軽減する筆記具です。">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://www.pilot.co.jp/favicon.ico">
 </head>
 <body>
-  <header class="g-header">
-    <div class="g-header__inner">
-      <h1 class="g-header__logo">
-        <a href="#"><img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/common/logo.svg" alt="サングローブ株式会社" width="125" height="23"></a>
-      </h1>
-      <button class="g-header__menu js-modal-toggle" aria-label="メニューを開く">
-        <span class="g-header__menu-line"></span>
-        <span class="g-header__menu-line"></span>
-        <span class="g-header__menu-line"></span>
-      </button>
-      <nav class="g-header__nav">
-        <ul class="g-header__nav-list">
-          <li><a href="#company">会社概要</a></li>
-          <li><a href="#service">事業内容</a></li>
-          <li><a href="#voice">お客様の声</a></li>
-          <li><a href="#news">お知らせ</a></li>
-          <li><a href="#media">自社メディア</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-      </nav>
+  <header class="sticky">
+    <div id="header_logo">
+      <p><a href="https://www.pilot.co.jp/"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/logo_pilot.png" width="120" alt="PILOTロゴ"></a></p>
+      <p><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/logo_drgrip_header.png" width="220" alt="ドクターグリップロゴ"></p>
     </div>
+    <div id="toggle"><p id="trigger"><span></span><span></span><span></span></p></div>
+    <nav class="hide" id="main-nav">
+      <ul>
+        <li><a href="#outline">特長</a></li>
+        <li><a href="#history">ヒストリー</a></li>
+        <li><a href="#lineup">ラインアップ</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <section class="p-top-visual">
-      <div class="p-top-visual__main">
-        <video class="p-top-visual__main-wave-video" muted autoplay loop playsinline poster="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/visual-main-bg-sp.svg">
-          <source src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/movie/wave-kv.mp4" type="video/mp4">
-        </video>
-        <div class="p-top-visual__main-content">
-          <p class="p-top-visual__main-ttl">BEST SOLUTION<br>FOR A FUTURE</p>
-          <p class="p-top-visual__main-sub">――― As Best Creative, Do Everything For a Goal...</p>
-          <h2 class="p-top-visual__main-desc">想像を超えた、最先端の集客支援を提案</h2>
+  <div id="wrap">
+    <div id="key_visual"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/key_visual.png" width="100%" alt="キービジュアル"></div>
+
+    <article id="outline">
+      <h2><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/text_outline.png" width="320" alt="特長"></h2>
+      <div id="preinfo">
+        <div>
+          <h3>首・肩・腕への負担を軽減する</h3>
+          <p>ずっと書きつづけていると、手が疲れる、しびれる、肩がこる。<br>
+          そんな悩みと別れるために生まれたのがドクターグリップ。<br>
+          人間工学に基づき、無理なく握れる軸径を採用。<br>
+          筆記時に肩や腕にかかる筋肉の負担を軽減する筆記具です。</p>
+        </div>
+        <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/outline_01.jpg" width="320" alt="特長画像"></div>
+      </div>
+      <section class="outline_1">
+        <div class="product_detail">
+          <p class="product_category"><span>シャープペンシル</span></p>
+          <h3>振るだけで、芯が出る！</h3>
+          <div>
+            <p>「フレフレ機構」搭載で、振るだけで芯が出る。<br>
+            持ち替えることなくノンストップ筆記が可能です。<br>
+            シャープ替芯は、高純度グラファイト配合の「ネオックス・グラファイト」。<br>
+            なめらか・汚れにくい・濃い筆記を実現しました。</p>
+          </div>
+        </div>
+        <div class="product_image"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/outline_02.jpg" width="320" alt="シャープペンシル"></div>
+      </section>
+      <section class="outline_2">
+        <div class="product_detail">
+          <p class="product_category"><span>油性ボールペン</span></p>
+          <h3>書き出しから、濃くなめらかに書ける。</h3>
+          <div>
+            <p>低粘度「アクロインキ」搭載で、なめらかな書き味と書き出し時のカスレのない濃い筆記を実現しました。<br>
+            もちろん油性インキならではの優れた耐水性です。</p>
+          </div>
+        </div>
+        <div class="product_image"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/outline_03.jpg" width="320" alt="油性ボールペン"></div>
+      </section>
+      <section class="outline_3">
+        <div class="product_detail">
+          <p class="product_category"><span>多機能筆記具</span></p>
+          <h3>1本で5役のマルチ筆記具</h3>
+          <div>
+            <p>1本に4色ボールペンとシャープペンシルを搭載。<br>
+            4色のボールペンをシチュエーションごとに使い分ければ、筆跡を見やすくコーディネートできます。<br>
+            シャープペンシルは、思ったこと、感じたことをためらうことなくスピーディに書き消しできます。</p>
+          </div>
+        </div>
+        <div class="product_image"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/outline_04.jpg" width="320" alt="多機能筆記具"></div>
+      </section>
+    </article>
+
+    <div id="history">
+      <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/text_history.png" width="320" alt="ヒストリー"></div>
+      <h2>「いちばん使いやすい筆記具」を創るという思い。</h2>
+      <div id="chronicle">
+        <h3 id="chronicle-toggle"><span class="open">年表を開く</span><span class="close" style="display:none;">年表を閉じる</span></h3>
+        <div id="chronicle_detail" style="display:none;">
+          <dl>
+            <dt>1991</dt>
+            <dd><strong>初代ドクターグリップ ボールペン誕生</strong><br>肩や腕にかかる負担を軽減する事を目的として開発。<br>メインターゲットは銀行員、事務員等の「強い筆圧で長時間筆記をする人」。<br>使用場所はオフィスを想定していた。</dd>
+            <dt>1992</dt>
+            <dd><strong>ドクターグリップ シャープペンシル発売</strong><br>新たにフレフレ機構を搭載したシャープペンシルを発売。</dd>
+            <dt>1995</dt>
+            <dd><strong>ゲルインキボールペン発売</strong><br>ゲルインキ搭載のドクターグリップを発売。</dd>
+            <dt>1999</dt>
+            <dd><strong>スケルトンカラー発売</strong><br>ボディの色をカラフルなスケルトンカラーにしたバージョンを発売。ユーザーがこれまでの社会人から、中高生へと幅広く拡大。</dd>
+            <dt>2001</dt>
+            <dd><strong>メタリックカラー発売</strong><br>ボディの色をメタリックカラーにしたバージョンを発売。</dd>
+            <dt>2002</dt>
+            <dd><strong>アロマシリーズ第一弾発売</strong><br>「アロマスティック」を装填し、香りを楽しめるドクターグリップ。2002〜2017年にかけて14回アロマシリーズを発売。</dd>
+            <dt>2003</dt>
+            <dd><strong>Gスペックボールペン発売</strong><br>慣性モーメントの軽減、新設計の二重構造グリップで「筆記時の疲れを軽減するペン」として進化を遂げた、「ドクターグリップGスペック」を発売。</dd>
+            <dt>2004</dt>
+            <dd><strong>Gスペックシャープペンシル発売</strong><br>ボールペンに合わせてシャープペンシルを発売。</dd>
+            <dt>2006</dt>
+            <dd><strong>CL発売</strong><br>独創的な内グリップ部分を持つ「オフローダー」と「ふるふるムース」の2種類で新たに展開するドクターグリップCLシリーズを発売。CLはClipless（クリップレス）の略。</dd>
+            <dt>2007</dt>
+            <dd><strong>4+1 ボールペン0.7㎜＋シャープペンシル0.5㎜発売</strong><br>4色のボールペンの他に、シャープペンシルがついた4+1（フォープラスワン）を発売。</dd>
+            <dt>2008</dt>
+            <dd><strong>Gスペック フラッシュカラーシリーズ発売</strong><br>より輝きをもったビビッドなフラッシュカラーシリーズを発売。</dd>
+            <dt>2009</dt>
+            <dd><strong>フルブラック発売</strong><br>金属クリップを搭載し、ブラックカラーでまとめた、大人をターゲットにしたフルブラックを発売。</dd>
+            <dt>2011</dt>
+            <dd><strong>ピュアホワイト発売</strong><br>シリーズ発売開始20周年、高級タイプのピュアホワイトを発売。</dd>
+            <dt>2012</dt>
+            <dd><strong>Gスペック フロストカラーカラーシリーズ発売</strong><br>すりガラス（フロスト）のような質感で、やわらかく光を通すやさしい色合いのGスペック フロストカラーシリーズを発売。</dd>
+            <dt>2013</dt>
+            <dd><strong>4+1 ボールペン0.5㎜+シャープペンシル0.5㎜ 発売</strong><br>アクロインキ搭載、極細タイプの4+1を発売。</dd>
+            <dt>2014</dt>
+            <dd><strong>Gスペック シャープペンシル0.3/0.9㎜ 発売</strong><br>細書きを好む学生に向けて0.3㎜と、マークシートにも使える0.9㎜を発売。</dd>
+            <dt>2016</dt>
+            <dd><strong>CLプレイボーダー シャープペンシル0.3㎜発売</strong><br>人気のプレイボーダーに0.3㎜を追加して発売。</dd>
+            <dt>2019</dt>
+            <dd><strong>4+1 ボールペン0.5㎜+シャープペンシル0.3㎜ 発売</strong><br>学生に人気の高い0.3㎜のシャープペンシルを搭載した4+1を発売。</dd>
+            <dt>2021</dt>
+            <dd><strong>4+1 ボールペン0.3㎜＋シャープペンシル0.3㎜発売</strong><br>ボールペンもシャープペンシルも細かい文字がきれいに書ける0.3mmを搭載した4+1を発売。</dd>
+            <dt>2022</dt>
+            <dd><strong>ザ・ドクターグリップシャープペンシルを発売</strong><br>シリーズ最高の静音設計とフレフレロックを搭載した、新しいドクターグリップを発売。</dd>
+            <dt>2023</dt>
+            <dd><strong>ザ・ドクターグリップシャープペンシル0.3㎜を発売</strong><br>ザ・ドクターグリップにシャープペンシル0.3mmを追加して発売。</dd>
+          </dl>
         </div>
       </div>
-    </section>
-
-    <section class="p-top-voice" id="voice">
-      <h2>お客様の声</h2>
-      <ul class="p-top-voice__list">
-        <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー1" width="60" height="60">
-          <div>
-            <strong>ワンアップモチベーション 様</strong>
-            <p>心から納得できる仕上がりに感動しました</p>
-          </div>
-        </li>
-        <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー2" width="60" height="60">
-          <div>
-            <strong>横浜本牧パーソナルトレーナー 様</strong>
-            <p>お客様からの評判も好評です</p>
-          </div>
-        </li>
-        <li>
-          <img src="https://www.sungrove.co.jp/wp-content/themes/sungrove/assets/img/top/icon-user.png" alt="ユーザー3" width="60" height="60">
-          <div>
-            <strong>Salon de Faire 様</strong>
-            <p>豊富なアイデアの提案に感謝です</p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="p-top-information" id="news">
-      <h2>お知らせ</h2>
-      <ul class="p-top-information__list">
-        <li>
-          <strong>2025.3.25</strong> 【御礼】取引社数50,000社突破のお知らせ
-        </li>
-        <li>
-          <strong>2025.3.3</strong> 【札幌、仙台、広島支社】3オフィス設立のお知らせ
-        </li>
-      </ul>
-    </section>
-
-    <section class="p-top-media" id="media">
-      <h2>自社メディア【SUNGROVE】</h2>
-      <ul class="p-top-media__list">
-        <li>
-          <a href="https://www.sungrove.co.jp/line-official-flyer/" target="_blank">
-            <img src="https://www.sungrove.co.jp/wp-content/uploads/2023/12/00-12-300x169.jpg" alt="LINEチラシとは？">
-            <span>LINEチラシとは？機能やメリット・デメリット・無料で使えるか・出稿の流れを解説</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.sungrove.co.jp/line-official-account-plan/" target="_blank">
-            <img src="https://www.sungrove.co.jp/wp-content/uploads/2023/12/00-15-300x169.jpg" alt="LINE公式アカウントの料金プランを解説">
-            <span>LINE公式アカウントの料金プランを解説！コストを抑えるポイントやプランを効果的に選択する方法も紹介</span>
-          </a>
-        </li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="g-footer">
-    <div class="g-footer__inner">
-      <small>&copy; 2024 サングローブ株式会社風 サンプルサイト</small>
     </div>
-  </footer>
+
+    <div id="lineup">
+      <div id="text_lineup"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/text_lineup.png" width="320" alt="ラインアップ"></div>
+      <ul id="lineup_category">
+        <li class="current">シャープペンシル</li>
+        <li>油性ボールペン</li>
+        <li>多機能筆記具</li>
+      </ul>
+      <div id="lineup_product">
+        <section>
+          <h2>深化した、疲れにくい筆記具</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>ザ・ドクターグリップ</h3>
+              <ul>
+                <li>シャープペンシル 0.3mm</li>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_the.jpg" width="220" alt="ザ・ドクターグリップ"></div>
+          </div>
+        </section>
+        <section>
+          <h2>疲れにくく、芯が折れない、進化したドクターグリップ</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>ドクターグリップACE</h3>
+              <ul>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_ace_sharp.jpg" width="220" alt="ACE"></div>
+          </div>
+        </section>
+        <section>
+          <h2>高級感のあるブラックカラー</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>フルブラック</h3>
+              <ul>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_fullblack_sharp.jpg" width="220" alt="フルブラック"></div>
+          </div>
+        </section>
+        <section>
+          <h2>内グリップを組み替えて、ベストバランスにカスタマイズ</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>プレイバランス</h3>
+              <ul>
+                <li>シャープペンシル 0.3mm</li>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_playbalance.jpg" width="220" alt="プレイバランス"></div>
+          </div>
+        </section>
+        <section>
+          <h2>使いやすさを追究したドクターグリップ</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>Gスペック</h3>
+              <ul>
+                <li>シャープペンシル 0.3mm</li>
+                <li>シャープペンシル 0.5mm</li>
+                <li>シャープペンシル 0.9mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_gspec_sharp.jpg" width="220" alt="Gスペック"></div>
+          </div>
+        </section>
+        <section>
+          <h2>組み替え自由なグリップ&クリップレス</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>プレイボーダー</h3>
+              <ul>
+                <li>シャープペンシル 0.3mm</li>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_playborder_sharp.jpg" width="220" alt="プレイボーダー"></div>
+          </div>
+        </section>
+        <section>
+          <h2>疲れにくい筆記具の定番</h2>
+          <div class="lineup_detail">
+            <div>
+              <h3>クラシック</h3>
+              <ul>
+                <li>シャープペンシル 0.3mm</li>
+                <li>シャープペンシル 0.5mm</li>
+              </ul>
+            </div>
+            <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/lineup_product_classic.jpg" width="220" alt="クラシック"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <nav class="hide">
+        <ul>
+          <li><a href="https://www.pilot.co.jp/privacy/access_info.html"><span>アクセス情報の</span><span>取扱いについて</span></a></li>
+          <li><a href="https://www.pilot.co.jp/privacy/">個人情報保護方針</a></li>
+          <li><a href="https://www.pilot.co.jp/info_security_policy/"><span>情報セキュリティー</span><span>ポリシー</span></a></li>
+          <li><a href="https://www.pilot.co.jp/view_env/">閲覧環境について</a></li>
+          <li><a href="https://www.pilot.co.jp/sitemap/">サイトマップ</a></li>
+        </ul>
+      </nav>
+      <div id="sns">
+        <div><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/footer_logo.png" width="120" alt="PILOTフッターロゴ"></div>
+        <div>
+          <p>公式SNS</p>
+          <ul>
+            <li id="icon_facebook"><a href="https://www.facebook.com/PILOT.Corporation/" target="_blank"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/icon_facebook.png" width="32" alt="Facebook"></a></li>
+            <li id="icon_instagram"><a href="https://www.instagram.com/pilot_corporation/" target="_blank"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/icon_instagram.png" width="32" alt="Instagram"></a></li>
+            <li id="icon_youtube"><a href="https://www.youtube.com/user/PILOTCORP1" target="_blank"><img src="https://www.pilot.co.jp/promotion/special_sites/drgrip/icon_youtube.png" width="32" alt="YouTube"></a></li>
+          </ul>
+        </div>
+      </div>
+      <p id="credit">©2024 PILOT Corporation</p>
+    </footer>
+  </div>
 
   <script src="script.js"></script>
 </body>
