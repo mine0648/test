@@ -1,6 +1,6 @@
 /*!
- * DEPART Design Agency - Enhanced CSS
- * Modern, professional design company portfolio website
+ * 相川動物園 - Enhanced CSS
+ * Family-friendly zoo website with warm and welcoming design
  * 
  * @author Claude Code
  * @version 1.0.0
@@ -15,15 +15,17 @@
 }
 
 :root {
-  --primary-blue: #2355D5;
-  --primary-blue-dark: #1a4bb8;
-  --primary-blue-light: #4a90e2;
-  --gradient-bg: linear-gradient(135deg, #f8f9ff 0%, #e6f0ff 100%);
-  --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
-  --shadow-soft: 0 8px 32px rgba(35, 85, 213, 0.12);
-  --shadow-medium: 0 12px 40px rgba(35, 85, 213, 0.15);
-  --shadow-strong: 0 20px 60px rgba(35, 85, 213, 0.2);
+  --primary-green: #4CAF50;
+  --primary-green-dark: #388E3C;
+  --primary-green-light: #81C784;
+  --secondary-brown: #8D6E63;
+  --warm-orange: #FF9800;
+  --gradient-bg: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fff8 100%);
+  --shadow-soft: 0 8px 32px rgba(76, 175, 80, 0.12);
+  --shadow-medium: 0 12px 40px rgba(76, 175, 80, 0.15);
+  --shadow-strong: 0 20px 60px rgba(76, 175, 80, 0.2);
   --border-radius: 20px;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -46,12 +48,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-blue);
+  background: var(--primary-green);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-blue-dark);
+  background: var(--primary-green-dark);
 }
 
 /* Header Styles */
@@ -86,7 +88,7 @@ body {
 .logo {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--primary-blue);
+  color: var(--primary-green);
   text-decoration: none;
   position: relative;
   transition: var(--transition);
@@ -131,7 +133,7 @@ body {
   left: -10px;
   right: -10px;
   bottom: 0;
-  background: rgba(35, 85, 213, 0.05);
+  background: rgba(76, 175, 80, 0.05);
   border-radius: 12px;
   transform: scaleX(0);
   transition: var(--transition);
@@ -154,7 +156,7 @@ body {
 }
 
 .nav-menu a:hover {
-  color: var(--primary-blue);
+  color: var(--primary-green);
 }
 
 .nav-menu a:hover::after {
@@ -167,7 +169,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(35, 85, 213, 0.85), rgba(35, 85, 213, 0.75)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80');
+  background: linear-gradient(rgba(76, 175, 80, 0.75), rgba(76, 175, 80, 0.65)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -181,7 +183,7 @@ body {
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(35, 85, 213, 0.15) 0%, rgba(35, 85, 213, 0.05) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 50%, transparent 100%);
   border-radius: 50%;
   top: -300px;
   right: -300px;
@@ -193,7 +195,7 @@ body {
   position: absolute;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(74, 144, 226, 0.12) 0%, rgba(74, 144, 226, 0.04) 50%, transparent 100%);
+  background: radial-gradient(circle, rgba(129, 199, 132, 0.12) 0%, rgba(129, 199, 132, 0.04) 50%, transparent 100%);
   border-radius: 50%;
   bottom: -200px;
   left: -200px;
@@ -337,29 +339,29 @@ body {
   line-height: 1.6;
 }
 
-/* Works Section */
-.works {
+/* Animals Section */
+.animals {
   background: var(--gradient-bg);
   position: relative;
 }
 
-.works::before {
+.animals::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+  background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
 }
 
-.works-grid {
+.animals-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 3rem;
 }
 
-.work-card {
+.animal-card {
   background: var(--gradient-card);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -370,12 +372,12 @@ body {
   backdrop-filter: blur(10px);
 }
 
-.work-card:hover {
+.animal-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-strong);
 }
 
-.work-image {
+.animal-image {
   width: 100%;
   height: 280px;
   background: var(--gradient-primary);
@@ -389,7 +391,7 @@ body {
   overflow: hidden;
 }
 
-.work-image::before {
+.animal-image::before {
   content: '';
   position: absolute;
   top: 0;
@@ -401,46 +403,46 @@ body {
   transition: transform 0.6s;
 }
 
-.work-card:hover .work-image::before {
+.animal-card:hover .animal-image::before {
   transform: translateX(100%);
 }
 
-.work-content {
+.animal-content {
   padding: 2rem;
 }
 
-.work-title {
+.animal-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #333;
 }
 
-.work-desc {
+.animal-desc {
   color: #666;
   line-height: 1.7;
   font-size: 1rem;
 }
 
-/* Services Section */
-.services-grid {
+/* Experiences Section */
+.experiences-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
 }
 
-.service-card {
+.experience-card {
   background: white;
   padding: 3rem 2rem;
   border-radius: var(--border-radius);
   text-align: center;
-  border: 2px solid rgba(35, 85, 213, 0.1);
+  border: 2px solid rgba(76, 175, 80, 0.1);
   transition: var(--transition);
   position: relative;
   overflow: hidden;
 }
 
-.service-card::before {
+.experience-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -452,52 +454,52 @@ body {
   transition: var(--transition);
 }
 
-.service-card:hover::before {
+.experience-card:hover::before {
   transform: scaleX(1);
 }
 
-.service-card:hover {
-  border-color: var(--primary-blue);
+.experience-card:hover {
+  border-color: var(--primary-green);
   box-shadow: var(--shadow-medium);
   transform: translateY(-5px);
 }
 
-.service-icon {
+.experience-icon {
   font-size: 4rem;
   margin-bottom: 2rem;
   display: block;
   transition: var(--transition);
 }
 
-.service-card:hover .service-icon {
+.experience-card:hover .experience-icon {
   transform: scale(1.1) rotate(5deg);
 }
 
-.service-title {
+.experience-title {
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: #333;
 }
 
-.service-desc {
+.experience-desc {
   color: #666;
   line-height: 1.8;
   font-size: 1rem;
 }
 
-/* Blog Section */
-.blog {
+/* Events Section */
+.events {
   background: var(--gradient-bg);
 }
 
-.blog-grid {
+.events-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 3rem;
 }
 
-.blog-card {
+.event-card {
   background: white;
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -506,15 +508,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.blog-card:hover {
+.event-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-medium);
 }
 
-.blog-image {
+.event-image {
   width: 100%;
   height: 220px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #81C784 0%, #4CAF50 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -525,7 +527,7 @@ body {
   overflow: hidden;
 }
 
-.blog-image::after {
+.event-image::after {
   content: '';
   position: absolute;
   top: 0;
@@ -537,16 +539,16 @@ body {
   transition: transform 0.6s;
 }
 
-.blog-card:hover .blog-image::after {
+.event-card:hover .event-image::after {
   transform: translateX(100%);
 }
 
-.blog-content {
+.event-content {
   padding: 2rem;
 }
 
-.blog-date {
-  color: var(--primary-blue);
+.event-date {
+  color: var(--primary-green);
   font-size: 0.9rem;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -554,7 +556,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-.blog-title {
+.event-title {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -562,9 +564,41 @@ body {
   line-height: 1.4;
 }
 
-.blog-excerpt {
+.event-excerpt {
   color: #666;
   line-height: 1.7;
+}
+
+/* Access Section */
+.access-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.access-details,
+.access-transport {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.access-details h3,
+.access-transport h3 {
+  color: var(--primary-green);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.access-details p,
+.access-transport p {
+  margin-bottom: 1rem;
+  color: #666;
+  line-height: 1.6;
 }
 
 /* Contact Section */
@@ -610,7 +644,7 @@ body {
 .contact-button {
   display: inline-block;
   background: white;
-  color: var(--primary-blue);
+  color: var(--primary-green);
   padding: 1.2rem 3.5rem;
   border-radius: 50px;
   text-decoration: none;
@@ -629,7 +663,7 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(35, 85, 213, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
   transition: left 0.5s;
 }
 
@@ -638,7 +672,7 @@ body {
 }
 
 .contact-button:hover {
-  background: #f0f8ff;
+  background: #f0fff0;
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4);
 }
@@ -686,16 +720,16 @@ body {
     padding: 4rem 0;
   }
   
-  .works-grid,
-  .services-grid,
-  .blog-grid {
+  .animals-grid,
+  .experiences-grid,
+  .events-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
   
-  .service-card,
-  .work-content,
-  .blog-content {
+  .experience-card,
+  .animal-content,
+  .event-content {
     padding: 1.5rem;
   }
   
@@ -724,9 +758,9 @@ body {
     margin-bottom: 3rem;
   }
   
-  .work-card,
-  .service-card,
-  .blog-card {
+  .animal-card,
+  .experience-card,
+  .event-card {
     margin: 0;
   }
 }
@@ -783,7 +817,7 @@ body {
 .cta-button:focus,
 .contact-button:focus,
 .nav-menu a:focus {
-  outline: 2px solid var(--primary-blue);
+  outline: 2px solid var(--primary-green);
   outline-offset: 2px;
 }
 
@@ -799,9 +833,9 @@ body {
     page-break-inside: avoid;
   }
   
-  .work-card,
-  .service-card,
-  .blog-card {
+  .animal-card,
+  .experience-card,
+  .event-card {
     page-break-inside: avoid;
     box-shadow: none;
     border: 1px solid #ddd;
