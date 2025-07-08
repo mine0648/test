@@ -1,14 +1,13 @@
-/*!
- * 相川動物園 - インタラクティブ JavaScript
- * 動物園サイト用の楽しく魅力的な機能
+/*
+ * サムネAI - YouTubeサムネイル生成ツール
+ * Interactive JavaScript for modern thumbnail generation website
  * 
- * @author Claude Code
- * @version 2.0.0
+ * @version 1.0.0
  * @license MIT
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🦁 相川動物園のウェブサイトへようこそ！ 🦒');
+    console.log('✨ サムネAI ウェブサイトが読み込まれました！');
     
     // ========================================
     // ナビゲーション機能
@@ -17,29 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // スクロール時のナビゲーション効果
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 4px 20px rgba(46, 125, 50, 0.15)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 4px 20px rgba(46, 125, 50, 0.1)';
-        }
-    });
-    
-    // ハンバーガーメニューの機能（モバイル用）
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
+    // ハンバーガーメニュー（モバイル）
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
     }
     
     // スムーズスクロール
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -60,6 +49,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // ナビゲーションのアクティブリンク更新
+    window.addEventListener('scroll', function() {
+        let current = '';
+        const sections = document.querySelectorAll('section[id]');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // ========================================
+    // カテゴリフィルター機能
+    // ========================================
+    
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const exampleCards = document.querySelectorAll('.example-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // アクティブボタンの更新
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filterCategory = this.getAttribute('data-category');
+            
+            // カードのフィルタリング
+            exampleCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (filterCategory === 'all' || cardCategory === filterCategory) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeInUp 0.5s ease-out';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
     // ========================================
     // スクロールアニメーション
     // ========================================
@@ -72,20 +111,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                
-                // 統計数字のカウントアニメーション
-                if (entry.target.classList.contains('stat')) {
-                    animateNumbers(entry.target);
-                }
+                entry.target.classList.add('animate-in');
             }
         });
     }, observerOptions);
     
-    // アニメーションを適用する要素を観察
+    // アニメーション対象要素
     const animatedElements = document.querySelectorAll(`
-        .animal-card, .experience-card, .event-card, .info-card,
-        .welcome-text, .welcome-image, .stat, .access-card, .contact-card
+        .hero-content,
+        .highlight-card,
+        .example-card,
+        .feature-card,
+        .step-card,
+        .pricing-card,
+        .section-header
     `);
     
     animatedElements.forEach(el => {
@@ -93,165 +132,142 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // 数字カウントアニメーション
+    // インタラクティブ要素
     // ========================================
     
-    function animateNumbers(element) {
-        const numberElement = element.querySelector('h3');
-        if (!numberElement) return;
-        
-        const text = numberElement.textContent;
-        const number = parseInt(text.replace(/[^\d]/g, ''));
-        if (isNaN(number)) return;
-        
-        const suffix = text.replace(/[\d]/g, '');
-        const duration = 2000;
-        const startTime = performance.now();
-        
-        function updateNumber(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+    // ボタンのクリックエフェクト
+    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .plan-button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // リップル効果
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
             
-            // イージング関数（ease-out）
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            const currentNumber = Math.floor(number * easeOut);
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
             
-            numberElement.textContent = currentNumber + suffix;
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
             
-            if (progress < 1) {
-                requestAnimationFrame(updateNumber);
-            }
-        }
-        
-        requestAnimationFrame(updateNumber);
-    }
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
     
     // ========================================
-    // 動物カード インタラクション
+    // 使い方セクションのインタラクション
     // ========================================
     
-    const animalCards = document.querySelectorAll('.animal-card');
+    const stepCards = document.querySelectorAll('.step-card');
+    const styleOptions = document.querySelectorAll('.style-option');
     
-    animalCards.forEach(card => {
-        // ホバーエフェクト強化
+    // ステップカードのホバー効果
+    stepCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
-            
-            // 動物の鳴き声シミュレーション（サウンドエフェクト風）
-            const animalName = this.querySelector('.animal-overlay h3').textContent;
-            showAnimalFact(animalName);
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
-            hideAnimalFact();
-        });
-        
-        // クリックで詳細情報表示
-        card.addEventListener('click', function() {
-            const animalName = this.querySelector('.animal-overlay h3').textContent;
-            showAnimalDetails(animalName, this);
         });
     });
     
-    // 動物の豆知識表示
-    function showAnimalFact(animalName) {
-        const facts = {
-            'ライオン': '🦁 ライオンは1日に20時間も寝ます！',
-            'アジアゾウ': '🐘 ゾウは仲間の死を悼むことで知られています',
-            'キリン': '🦒 キリンの舌は最大50cmまで伸びます！',
-            'ペンギン': '🐧 ペンギンは時速40kmで泳げます',
-            'パンダ': '🐼 パンダは1日に12-16時間食事をします',
-            'ニホンザル': '🐵 サルは温泉に入る習性があります'
-        };
-        
-        const fact = facts[animalName];
-        if (fact) {
-            showToast(fact);
-        }
-    }
-    
-    function hideAnimalFact() {
-        // 必要に応じて豆知識を非表示
-    }
+    // スタイルオプションの選択
+    styleOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            styleOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // 選択フィードバック
+            showToast(`${this.textContent} スタイルが選択されました！`);
+        });
+    });
     
     // ========================================
-    // 動物詳細モーダル
+    // フローティング要素
     // ========================================
     
-    function showAnimalDetails(animalName, cardElement) {
-        const animalData = {
-            'ライオン': {
-                name: 'アフリカライオン',
-                habitat: 'アフリカのサバンナ',
-                diet: '肉食（主にシマウマ、ガゼルなど）',
-                lifespan: '野生：10-14年、飼育下：20年以上',
-                funFact: 'ライオンの鳴き声は8km先まで届きます！',
-                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
-            },
-            'アジアゾウ': {
-                name: 'アジアゾウ',
-                habitat: 'アジアの森林と草原',
-                diet: '草食（草、果物、樹皮など）',
-                lifespan: '野生：60-70年、飼育下：80年以上',
-                funFact: 'ゾウは自分の名前を覚えて反応します！',
-                image: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
-            },
-            'キリン': {
-                name: 'アミメキリン',
-                habitat: 'アフリカのサバンナ',
-                diet: '草食（主にアカシアの葉）',
-                lifespan: '野生：20-25年、飼育下：28年',
-                funFact: 'キリンの血圧は人間の3倍もあります！',
-                image: 'https://images.unsplash.com/photo-1551961750-00d3d4d31f0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
-            }
-        };
+    // パーティクルアニメーション
+    function createFloatingParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'floating-particle';
+        particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 8s infinite ease-in-out;
+            left: ${Math.random() * 100}vw;
+            top: 100vh;
+        `;
         
-        const data = animalData[animalName];
-        if (data) {
-            createDetailModal(data);
-        }
+        document.body.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 8000);
     }
     
-    function createDetailModal(data) {
-        // 既存のモーダルを削除
-        const existingModal = document.querySelector('.animal-modal');
-        if (existingModal) {
-            existingModal.remove();
-        }
+    // 定期的にパーティクルを生成
+    setInterval(createFloatingParticle, 2000);
+    
+    // ========================================
+    // 料金カードのインタラクション
+    // ========================================
+    
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    
+    pricingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.boxShadow = '0 20px 40px rgba(139, 92, 246, 0.2)';
+        });
         
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = '';
+        });
+    });
+    
+    // ========================================
+    // モーダル機能
+    // ========================================
+    
+    function createModal(title, content, actionText = 'OK') {
         const modal = document.createElement('div');
-        modal.className = 'animal-modal';
+        modal.className = 'custom-modal';
         modal.innerHTML = `
             <div class="modal-overlay">
                 <div class="modal-content">
-                    <button class="modal-close">×</button>
-                    <div class="modal-image">
-                        <img src="${data.image}" alt="${data.name}" loading="lazy">
-                    </div>
-                    <div class="modal-info">
-                        <h2>${data.name}</h2>
-                        <div class="detail-grid">
-                            <div class="detail-item">
-                                <strong>🏠 生息地:</strong> ${data.habitat}
-                            </div>
-                            <div class="detail-item">
-                                <strong>🍽️ 食事:</strong> ${data.diet}
-                            </div>
-                            <div class="detail-item">
-                                <strong>⏰ 寿命:</strong> ${data.lifespan}
-                            </div>
-                        </div>
-                        <div class="fun-fact">
-                            <h3>🎉 面白い事実</h3>
-                            <p>${data.funFact}</p>
-                        </div>
+                    <h3>${title}</h3>
+                    <p>${content}</p>
+                    <div class="modal-actions">
+                        <button class="btn-primary modal-ok">${actionText}</button>
+                        <button class="btn-secondary modal-cancel">キャンセル</button>
                     </div>
                 </div>
             </div>
         `;
         
-        // モーダルスタイル
         modal.style.cssText = `
             position: fixed;
             top: 0;
@@ -273,192 +289,44 @@ document.addEventListener('DOMContentLoaded', function() {
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
         `;
         
-        const content = modal.querySelector('.modal-content');
-        content.style.cssText = `
+        const content_el = modal.querySelector('.modal-content');
+        content_el.style.cssText = `
             position: relative;
-            background: white;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.3);
-            animation: slideInUp 0.3s ease-out;
-        `;
-        
-        const closeBtn = modal.querySelector('.modal-close');
-        closeBtn.style.cssText = `
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 30px;
-            color: #666;
-            cursor: pointer;
-            z-index: 1;
-            transition: all 0.3s ease;
-        `;
-        
-        const modalImage = modal.querySelector('.modal-image');
-        modalImage.style.cssText = `
-            height: 250px;
-            overflow: hidden;
-            border-radius: 20px 20px 0 0;
-        `;
-        
-        const img = modal.querySelector('.modal-image img');
-        img.style.cssText = `
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        `;
-        
-        const modalInfo = modal.querySelector('.modal-info');
-        modalInfo.style.cssText = `
+            background: var(--slate-900);
+            color: var(--slate-100);
             padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            animation: slideInUp 0.3s ease-out;
+            text-align: center;
         `;
         
         document.body.appendChild(modal);
         
         // イベントリスナー
-        closeBtn.addEventListener('click', () => modal.remove());
+        modal.querySelector('.modal-ok').addEventListener('click', () => modal.remove());
+        modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
         overlay.addEventListener('click', () => modal.remove());
         
-        closeBtn.addEventListener('mouseenter', () => {
-            closeBtn.style.color = '#2E7D32';
-            closeBtn.style.transform = 'scale(1.1)';
-        });
-        
-        closeBtn.addEventListener('mouseleave', () => {
-            closeBtn.style.color = '#666';
-            closeBtn.style.transform = 'scale(1)';
-        });
+        return modal;
     }
     
-    // ========================================
-    // 体験プログラム予約システム
-    // ========================================
-    
-    const experienceCards = document.querySelectorAll('.experience-card');
-    
-    experienceCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const experienceName = this.querySelector('h3').textContent;
-            const price = this.querySelector('.price').textContent;
-            const time = this.querySelector('.time').textContent;
-            
-            showBookingModal(experienceName, price, time);
-        });
-        
-        // ホバーエフェクト
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+    // プランボタンのクリックイベント
+    document.querySelectorAll('.plan-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const planName = this.closest('.pricing-card').querySelector('h3').textContent;
+            createModal(
+                `${planName}プランを選択`,
+                `${planName}プランにご登録いただきありがとうございます！\n詳細な登録手順をメールでお送りします。`,
+                '確認'
+            );
         });
     });
-    
-    function showBookingModal(experienceName, price, time) {
-        const modal = document.createElement('div');
-        modal.className = 'booking-modal';
-        modal.innerHTML = `
-            <div class="booking-overlay">
-                <div class="booking-content">
-                    <h2>🎫 ${experienceName}の予約</h2>
-                    <div class="booking-details">
-                        <p><strong>体験名:</strong> ${experienceName}</p>
-                        <p><strong>料金:</strong> ${price}</p>
-                        <p><strong>時間:</strong> ${time}</p>
-                    </div>
-                    <form class="booking-form">
-                        <div class="form-group">
-                            <label>お名前:</label>
-                            <input type="text" required placeholder="山田太郎">
-                        </div>
-                        <div class="form-group">
-                            <label>人数:</label>
-                            <select required>
-                                <option value="">選択してください</option>
-                                <option value="1">1名</option>
-                                <option value="2">2名</option>
-                                <option value="3">3名</option>
-                                <option value="4">4名以上</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>希望日:</label>
-                            <input type="date" required min="${new Date().toISOString().split('T')[0]}">
-                        </div>
-                        <div class="form-buttons">
-                            <button type="submit" class="btn-confirm">予約する</button>
-                            <button type="button" class="btn-cancel">キャンセル</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        `;
-        
-        // スタイリング
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease-out;
-        `;
-        
-        const overlay = modal.querySelector('.booking-overlay');
-        overlay.style.cssText = `
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-        `;
-        
-        const content = modal.querySelector('.booking-content');
-        content.style.cssText = `
-            position: relative;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.3);
-            animation: slideInUp 0.3s ease-out;
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // フォーム送信処理
-        const form = modal.querySelector('.booking-form');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            showSuccessMessage(experienceName);
-            modal.remove();
-        });
-        
-        // キャンセルボタン
-        modal.querySelector('.btn-cancel').addEventListener('click', () => modal.remove());
-        overlay.addEventListener('click', () => modal.remove());
-    }
-    
-    function showSuccessMessage(experienceName) {
-        showToast(`🎉 ${experienceName}の予約が完了しました！詳細はメールでお送りします。`, 5000);
-    }
     
     // ========================================
     // トースト通知システム
@@ -466,23 +334,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function showToast(message, duration = 3000) {
         const toast = document.createElement('div');
-        toast.className = 'toast';
+        toast.className = 'toast-notification';
         toast.textContent = message;
         
         toast.style.cssText = `
             position: fixed;
             top: 100px;
             right: 20px;
-            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
             color: white;
             padding: 1rem 1.5rem;
             border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
             z-index: 10001;
             animation: slideInRight 0.3s ease-out;
             max-width: 300px;
             font-size: 0.9rem;
-            line-height: 1.4;
         `;
         
         document.body.appendChild(toast);
@@ -494,128 +361,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ========================================
-    // 天気ウィジェット
+    // キーボードショートカット
     // ========================================
     
-    function initWeatherWidget() {
-        const weather = {
-            icon: '☀️',
-            temp: '25°C',
-            description: '晴れ - 動物園日和です！',
-            humidity: '60%',
-            wind: '微風'
-        };
+    document.addEventListener('keydown', function(e) {
+        // Alt + G でジェネレーター開始
+        if (e.altKey && e.key === 'g') {
+            e.preventDefault();
+            showToast('🎨 サムネイル生成機能は開発中です！');
+        }
         
-        const widget = document.createElement('div');
-        widget.className = 'weather-widget';
-        widget.innerHTML = `
-            <div class="weather-content">
-                <div class="weather-icon">${weather.icon}</div>
-                <div class="weather-info">
-                    <div class="weather-temp">${weather.temp}</div>
-                    <div class="weather-desc">${weather.description}</div>
-                </div>
-            </div>
-        `;
+        // Alt + P で価格表示
+        if (e.altKey && e.key === 'p') {
+            e.preventDefault();
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+    
+    // ========================================
+    // パフォーマンス最適化
+    // ========================================
+    
+    // 画像の遅延読み込み
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                    }
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
         
-        widget.style.cssText = `
-            position: fixed;
-            top: 100px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.1);
-            z-index: 1000;
-            display: none;
-            min-width: 200px;
-            animation: slideInLeft 0.3s ease-out;
-        `;
-        
-        document.body.appendChild(widget);
-        
-        // スクロール時に表示/非表示
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > window.innerHeight / 2) {
-                widget.style.display = 'block';
-            } else {
-                widget.style.display = 'none';
-            }
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            imageObserver.observe(img);
         });
     }
     
     // ========================================
-    // 季節のイベント通知
-    // ========================================
-    
-    function checkSeasonalEvents() {
-        const now = new Date();
-        const month = now.getMonth() + 1;
-        
-        let eventMessage = '';
-        
-        if (month >= 7 && month <= 8) {
-            eventMessage = '🌻 夏の動物園祭り開催中！夜の動物園見学もお楽しみください。';
-        } else if (month >= 9 && month <= 11) {
-            eventMessage = '🍂 秋の動物フォトコンテスト開催中！美しい紅葉と動物たちの写真を撮影しよう。';
-        } else if (month === 12) {
-            eventMessage = '🎄 クリスマス特別イベント開催中！園内がクリスマス装飾で彩られています。';
-        } else if (month >= 3 && month <= 5) {
-            eventMessage = '🌸 春の動物園へようこそ！新緑の季節、動物たちも活発に動いています。';
-        }
-        
-        if (eventMessage) {
-            setTimeout(() => {
-                showToast(eventMessage, 6000);
-            }, 2000);
-        }
-    }
-    
-    // ========================================
-    // イースターエッグ - 動物の足跡
-    // ========================================
-    
-    let animalTrailMode = false;
-    const animalEmojis = ['🐾', '🦁', '🐘', '🦒', '🐧', '🐼', '🐵', '🦓', '🦏', '🦘'];
-    
-    // Ctrl+Shift+Z で動物の足跡モード切り替え
-    document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.shiftKey && e.key === 'Z') {
-            animalTrailMode = !animalTrailMode;
-            showToast(animalTrailMode ? '🐾 動物の足跡モード ON!' : '動物の足跡モード OFF', 2000);
-        }
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-        if (animalTrailMode) {
-            createAnimalTrail(e.clientX, e.clientY);
-        }
-    });
-    
-    function createAnimalTrail(x, y) {
-        const trail = document.createElement('span');
-        const randomEmoji = animalEmojis[Math.floor(Math.random() * animalEmojis.length)];
-        trail.textContent = randomEmoji;
-        
-        trail.style.cssText = `
-            position: fixed;
-            left: ${x}px;
-            top: ${y}px;
-            font-size: 20px;
-            pointer-events: none;
-            z-index: 9999;
-            animation: trailFade 3s ease-out forwards;
-            transform: translateX(-50%) translateY(-50%);
-        `;
-        
-        document.body.appendChild(trail);
-        
-        setTimeout(() => trail.remove(), 3000);
-    }
-    
-    // ========================================
-    // CSS アニメーション定義
+    // CSS アニメーション追加
     // ========================================
     
     const style = document.createElement('style');
@@ -658,26 +446,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        @keyframes slideInLeft {
-            from { 
-                opacity: 0; 
-                transform: translateX(-100%); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateX(0); 
+        @keyframes ripple {
+            to {
+                transform: scale(2);
+                opacity: 0;
             }
         }
         
-        @keyframes trailFade {
+        @keyframes float {
             0% { 
+                transform: translateY(0) rotate(0deg); 
                 opacity: 1; 
-                transform: translateX(-50%) translateY(-50%) scale(1); 
+            }
+            50% { 
+                transform: translateY(-50vh) rotate(180deg); 
+                opacity: 0.8; 
             }
             100% { 
+                transform: translateY(-100vh) rotate(360deg); 
                 opacity: 0; 
-                transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(180deg); 
             }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out;
         }
         
         .hamburger.active .bar:nth-child(1) {
@@ -700,14 +503,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
+                background: rgba(15, 23, 42, 0.95);
                 backdrop-filter: blur(20px);
-                box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
                 padding: 1rem 0;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             }
             
             .nav-menu.active .nav-item {
                 margin: 0.5rem 0;
+            }
+            
+            .nav-menu.active .nav-link {
+                padding: 0.75rem 1.5rem;
             }
         }
     `;
@@ -715,42 +523,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     
     // ========================================
-    // 初期化
+    // 初期化完了
     // ========================================
     
-    // 天気ウィジェット初期化
-    initWeatherWidget();
+    // ウェルカムメッセージ
+    setTimeout(() => {
+        if (!localStorage.getItem('thumbnailai-visited')) {
+            showToast('✨ サムネAIへようこそ！高品質なサムネイルを簡単に作成できます。', 4000);
+            localStorage.setItem('thumbnailai-visited', 'true');
+        }
+    }, 1000);
     
-    // 季節イベント確認
-    checkSeasonalEvents();
-    
-    // 画像の遅延読み込み
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.src || img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-    
-    // ページ読み込み完了メッセージ
-    console.log('🎉 相川動物園のウェブサイトが完全に読み込まれました！');
-    console.log('💡 隠し機能: Ctrl+Shift+Z で動物の足跡モードを切り替えられます！');
-    
-    // ウェルカムメッセージ（初回訪問時のみ）
-    if (!localStorage.getItem('aikawa-zoo-visited')) {
-        setTimeout(() => {
-            showToast('🦁 相川動物園へようこそ！動物たちがお待ちしています。', 4000);
-            localStorage.setItem('aikawa-zoo-visited', 'true');
-        }, 1000);
-    }
+    console.log('🎉 サムネAI のJavaScriptが完全に読み込まれました！');
+    console.log('💡 ショートカット: Alt+G でジェネレーター、Alt+P で価格表示');
 });
