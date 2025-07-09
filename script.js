@@ -1,58 +1,102 @@
 /*
- * サムネAI - YouTubeサムネイル生成ツール
- * Interactive JavaScript for modern thumbnail generation website
+ * Sungrove Corporation (サングローブ株式会社)
+ * Interactive JavaScript for Professional Web Experience
  * 
  * @version 1.0.0
  * @license MIT
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✨ サムネAI ウェブサイトが読み込まれました！');
+    console.log('🌱 Sungrove Corporation website loaded successfully');
     
     // ========================================
-    // ナビゲーション機能
+    // Smooth Header Scroll Effect
     // ========================================
     
-    const navbar = document.querySelector('.navbar');
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const header = document.querySelector('.g-header');
+    let lastScrollY = window.scrollY;
     
-    // ハンバーガーメニュー（モバイル）
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        
+        // Add background blur effect when scrolling
+        if (scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 4px 20px rgba(123, 182, 70, 0.15)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+        
+        lastScrollY = scrollY;
+    });
+    
+    // ========================================
+    // Mobile Navigation
+    // ========================================
+    
+    const mobileMenuBtn = document.querySelector('.g-header__menu');
+    const nav = document.querySelector('.g-header__nav');
+    const navLinks = document.querySelectorAll('.g-header__nav-link');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            nav.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            if (mobileMenuBtn.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
         });
     }
     
-    // スムーズスクロール
+    // ========================================
+    // Smooth Scrolling Navigation
+    // ========================================
+    
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
+            
             if (target) {
-                const headerHeight = navbar.offsetHeight;
-                const targetPosition = target.offsetTop - headerHeight;
+                const headerHeight = header.offsetHeight;
+                const targetPosition = target.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
                 
-                // モバイルメニューを閉じる
-                if (navMenu.classList.contains('active')) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
+                // Close mobile menu if open
+                if (nav.classList.contains('active')) {
+                    mobileMenuBtn.classList.remove('active');
+                    nav.classList.remove('active');
+                    const spans = mobileMenuBtn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
                 }
             }
         });
     });
     
-    // ナビゲーションのアクティブリンク更新
-    window.addEventListener('scroll', function() {
+    // ========================================
+    // Active Navigation Link Highlighting
+    // ========================================
+    
+    const sections = document.querySelectorAll('section[id]');
+    
+    window.addEventListener('scroll', () => {
         let current = '';
-        const sections = document.querySelectorAll('section[id]');
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -71,36 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // カテゴリフィルター機能
-    // ========================================
-    
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const exampleCards = document.querySelectorAll('.example-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // アクティブボタンの更新
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filterCategory = this.getAttribute('data-category');
-            
-            // カードのフィルタリング
-            exampleCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                if (filterCategory === 'all' || cardCategory === filterCategory) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeInUp 0.5s ease-out';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-    
-    // ========================================
-    // スクロールアニメーション
+    // Intersection Observer for Animations
     // ========================================
     
     const observerOptions = {
@@ -111,20 +126,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                entry.target.classList.add('fade-in-up');
+                
+                // Animate counters in hero section
+                if (entry.target.classList.contains('p-top-visual__stat-number')) {
+                    animateCounter(entry.target);
+                }
             }
         });
     }, observerOptions);
     
-    // アニメーション対象要素
+    // Observe elements for animation
     const animatedElements = document.querySelectorAll(`
-        .hero-content,
-        .highlight-card,
-        .example-card,
-        .feature-card,
-        .step-card,
-        .pricing-card,
-        .section-header
+        .c-section-header,
+        .p-top-voice__item,
+        .p-top-information__news-item,
+        .p-top-information__media-item,
+        .p-top-service__item,
+        .p-top-results__item,
+        .p-top-visual__stat-number
     `);
     
     animatedElements.forEach(el => {
@@ -132,17 +152,203 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // インタラクティブ要素
+    // Counter Animation
     // ========================================
     
-    // ボタンのクリックエフェクト
-    const buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .plan-button');
+    function animateCounter(element) {
+        const text = element.textContent;
+        const number = parseInt(text.replace(/[^0-9]/g, ''));
+        const suffix = text.replace(/[0-9]/g, '');
+        
+        if (!isNaN(number)) {
+            const duration = 2000;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const currentNumber = Math.floor(number * easeOut);
+                
+                element.textContent = currentNumber + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+    }
+    
+    // ========================================
+    // Service Cards Interaction
+    // ========================================
+    
+    const serviceCards = document.querySelectorAll('.p-top-service__item');
+    
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-12px) scale(1.02)';
+            this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // Add click interaction for mobile
+        card.addEventListener('click', function() {
+            showServiceModal(this);
+        });
+    });
+    
+    // ========================================
+    // Service Modal System
+    // ========================================
+    
+    function showServiceModal(serviceCard) {
+        const title = serviceCard.querySelector('.p-top-service__title').textContent;
+        const description = serviceCard.querySelector('.p-top-service__description').textContent;
+        const features = Array.from(serviceCard.querySelectorAll('.p-top-service__feature'))
+            .map(feature => feature.textContent);
+        
+        const modal = document.createElement('div');
+        modal.className = 'service-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <button class="modal-close" aria-label="閉じる">&times;</button>
+                    <div class="modal-header">
+                        <h3>${title}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>${description}</p>
+                        <div class="modal-features">
+                            <h4>主な機能・特徴</h4>
+                            <ul>
+                                ${features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="modal-cta">
+                            <a href="#contact" class="c-btn c-btn--primary">
+                                詳しく相談する
+                                <span class="c-btn__arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Add modal styles
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.3s ease-out;
+        `;
+        
+        const overlay = modal.querySelector('.modal-overlay');
+        overlay.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        `;
+        
+        const content = modal.querySelector('.modal-content');
+        content.style.cssText = `
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(123, 182, 70, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Close modal functionality
+        const closeBtn = modal.querySelector('.modal-close');
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+        
+        function closeModal() {
+            modal.style.animation = 'modalFadeOut 0.3s ease-out';
+            setTimeout(() => {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        
+        // ESC key to close
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+    
+    // ========================================
+    // Portfolio Image Hover Effects
+    // ========================================
+    
+    const portfolioItems = document.querySelectorAll('.p-top-results__item');
+    
+    portfolioItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const image = this.querySelector('.p-top-results__image img');
+            image.style.transform = 'scale(1.1)';
+            image.style.filter = 'brightness(1.1)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const image = this.querySelector('.p-top-results__image img');
+            image.style.transform = 'scale(1)';
+            image.style.filter = 'brightness(1)';
+        });
+    });
+    
+    // ========================================
+    // Parallax Effects for Hero Section
+    // ========================================
+    
+    const heroBackground = document.querySelector('.p-top-visual__wave-animation');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.3;
+        
+        if (heroBackground) {
+            heroBackground.style.transform = `translateY(${rate}px)`;
+        }
+    });
+    
+    // ========================================
+    // Button Ripple Effect
+    // ========================================
+    
+    const buttons = document.querySelectorAll('.c-btn');
     
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            // リップル効果
-            const ripple = document.createElement('span');
             const rect = this.getBoundingClientRect();
+            const ripple = document.createElement('span');
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
             const y = e.clientY - rect.top - size / 2;
@@ -171,256 +377,227 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ========================================
-    // 使い方セクションのインタラクション
+    // Lazy Loading for Images
     // ========================================
     
-    const stepCards = document.querySelectorAll('.step-card');
-    const styleOptions = document.querySelectorAll('.style-option');
-    
-    // ステップカードのホバー効果
-    stepCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // スタイルオプションの選択
-    styleOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            styleOptions.forEach(opt => opt.classList.remove('active'));
-            this.classList.add('active');
-            
-            // 選択フィードバック
-            showToast(`${this.textContent} スタイルが選択されました！`);
-        });
-    });
-    
-    // ========================================
-    // フローティング要素
-    // ========================================
-    
-    // パーティクルアニメーション
-    function createFloatingParticle() {
-        const particle = document.createElement('div');
-        particle.className = 'floating-particle';
-        particle.style.cssText = `
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: linear-gradient(45deg, #8b5cf6, #3b82f6);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-            animation: float 8s infinite ease-in-out;
-            left: ${Math.random() * 100}vw;
-            top: 100vh;
-        `;
-        
-        document.body.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 8000);
-    }
-    
-    // 定期的にパーティクルを生成
-    setInterval(createFloatingParticle, 2000);
-    
-    // ========================================
-    // 料金カードのインタラクション
-    // ========================================
-    
-    const pricingCards = document.querySelectorAll('.pricing-card');
-    
-    pricingCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-            this.style.boxShadow = '0 20px 40px rgba(139, 92, 246, 0.2)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '';
-        });
-    });
-    
-    // ========================================
-    // モーダル機能
-    // ========================================
-    
-    function createModal(title, content, actionText = 'OK') {
-        const modal = document.createElement('div');
-        modal.className = 'custom-modal';
-        modal.innerHTML = `
-            <div class="modal-overlay">
-                <div class="modal-content">
-                    <h3>${title}</h3>
-                    <p>${content}</p>
-                    <div class="modal-actions">
-                        <button class="btn-primary modal-ok">${actionText}</button>
-                        <button class="btn-secondary modal-cancel">キャンセル</button>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease-out;
-        `;
-        
-        const overlay = modal.querySelector('.modal-overlay');
-        overlay.style.cssText = `
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        `;
-        
-        const content_el = modal.querySelector('.modal-content');
-        content_el.style.cssText = `
-            position: relative;
-            background: var(--slate-900);
-            color: var(--slate-100);
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
-            animation: slideInUp 0.3s ease-out;
-            text-align: center;
-        `;
-        
-        document.body.appendChild(modal);
-        
-        // イベントリスナー
-        modal.querySelector('.modal-ok').addEventListener('click', () => modal.remove());
-        modal.querySelector('.modal-cancel').addEventListener('click', () => modal.remove());
-        overlay.addEventListener('click', () => modal.remove());
-        
-        return modal;
-    }
-    
-    // プランボタンのクリックイベント
-    document.querySelectorAll('.plan-button').forEach(button => {
-        button.addEventListener('click', function() {
-            const planName = this.closest('.pricing-card').querySelector('h3').textContent;
-            createModal(
-                `${planName}プランを選択`,
-                `${planName}プランにご登録いただきありがとうございます！\n詳細な登録手順をメールでお送りします。`,
-                '確認'
-            );
-        });
-    });
-    
-    // ========================================
-    // トースト通知システム
-    // ========================================
-    
-    function showToast(message, duration = 3000) {
-        const toast = document.createElement('div');
-        toast.className = 'toast-notification';
-        toast.textContent = message;
-        
-        toast.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
-            z-index: 10001;
-            animation: slideInRight 0.3s ease-out;
-            max-width: 300px;
-            font-size: 0.9rem;
-        `;
-        
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.style.animation = 'slideOutRight 0.3s ease-out forwards';
-            setTimeout(() => toast.remove(), 300);
-        }, duration);
-    }
-    
-    // ========================================
-    // キーボードショートカット
-    // ========================================
-    
-    document.addEventListener('keydown', function(e) {
-        // Alt + G でジェネレーター開始
-        if (e.altKey && e.key === 'g') {
-            e.preventDefault();
-            showToast('🎨 サムネイル生成機能は開発中です！');
-        }
-        
-        // Alt + P で価格表示
-        if (e.altKey && e.key === 'p') {
-            e.preventDefault();
-            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-    
-    // ========================================
-    // パフォーマンス最適化
-    // ========================================
-    
-    // 画像の遅延読み込み
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.classList.remove('lazy');
-                    }
+                    img.classList.remove('loading');
+                    img.style.filter = 'none';
                     imageObserver.unobserve(img);
                 }
             });
         });
         
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        document.querySelectorAll('img').forEach(img => {
+            img.classList.add('loading');
             imageObserver.observe(img);
         });
     }
     
     // ========================================
-    // CSS アニメーション追加
+    // Contact Form Enhancement (if exists)
+    // ========================================
+    
+    const contactButtons = document.querySelectorAll('a[href="#contact"], a[href="#contact-form"]');
+    
+    contactButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            showContactModal();
+        });
+    });
+    
+    function showContactModal() {
+        const modal = document.createElement('div');
+        modal.className = 'contact-modal';
+        modal.innerHTML = `
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <button class="modal-close" aria-label="閉じる">&times;</button>
+                    <div class="modal-header">
+                        <h3>お問い合わせ</h3>
+                        <p>お客様のビジネス課題について、お気軽にご相談ください。</p>
+                    </div>
+                    <div class="modal-body">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">お名前 <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">会社名</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">ご興味のあるサービス</label>
+                                <select id="service" name="service">
+                                    <option value="">選択してください</option>
+                                    <option value="web">Web制作・CMS</option>
+                                    <option value="ec">EC構築</option>
+                                    <option value="marketing">デジタルマーケティング</option>
+                                    <option value="video">動画制作</option>
+                                    <option value="other">その他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">お問い合わせ内容 <span class="required">*</span></label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="c-btn c-btn--primary c-btn--large">
+                                    送信する
+                                    <span class="c-btn__arrow">→</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        document.body.style.overflow = 'hidden';
+        
+        // Form submission
+        const form = modal.querySelector('.contact-form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showSuccessMessage();
+            closeContactModal();
+        });
+        
+        // Close functionality
+        const closeBtn = modal.querySelector('.modal-close');
+        const overlay = modal.querySelector('.modal-overlay');
+        
+        closeBtn.addEventListener('click', closeContactModal);
+        overlay.addEventListener('click', closeContactModal);
+        
+        function closeContactModal() {
+            modal.style.animation = 'modalFadeOut 0.3s ease-out';
+            setTimeout(() => {
+                document.body.removeChild(modal);
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+    
+    function showSuccessMessage() {
+        showNotification('お問い合わせを受け付けました。2営業日以内にご回答いたします。', 'success');
+    }
+    
+    // ========================================
+    // Notification System
+    // ========================================
+    
+    function showNotification(message, type = 'info', duration = 5000) {
+        const notification = document.createElement('div');
+        notification.className = `notification notification--${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-icon">
+                    ${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}
+                </span>
+                <span class="notification-message">${message}</span>
+                <button class="notification-close">&times;</button>
+            </div>
+        `;
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${type === 'success' ? '#7bb646' : type === 'error' ? '#ef4444' : '#0693e3'};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            z-index: 10001;
+            animation: slideInRight 0.3s ease-out;
+            max-width: 400px;
+            font-size: 0.9rem;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto-hide
+        const autoHide = setTimeout(() => {
+            hideNotification();
+        }, duration);
+        
+        // Manual close
+        const closeBtn = notification.querySelector('.notification-close');
+        closeBtn.addEventListener('click', () => {
+            clearTimeout(autoHide);
+            hideNotification();
+        });
+        
+        function hideNotification() {
+            notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    document.body.removeChild(notification);
+                }
+            }, 300);
+        }
+    }
+    
+    // ========================================
+    // Page Performance Monitoring
+    // ========================================
+    
+    window.addEventListener('load', () => {
+        const loadTime = performance.now();
+        console.log(`🚀 Page loaded in ${Math.round(loadTime)}ms`);
+        
+        // Track navigation timing
+        if (performance.getEntriesByType) {
+            const navEntries = performance.getEntriesByType('navigation');
+            if (navEntries.length > 0) {
+                const nav = navEntries[0];
+                console.log(`📊 Navigation timing:`, {
+                    DNS: Math.round(nav.domainLookupEnd - nav.domainLookupStart),
+                    TCP: Math.round(nav.connectEnd - nav.connectStart),
+                    Request: Math.round(nav.responseStart - nav.requestStart),
+                    Response: Math.round(nav.responseEnd - nav.responseStart),
+                    DOM: Math.round(nav.domContentLoadedEventEnd - nav.responseEnd)
+                });
+            }
+        }
+    });
+    
+    // ========================================
+    // CSS Animations
     // ========================================
     
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes fadeIn {
+        @keyframes modalFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         
-        @keyframes slideInUp {
+        @keyframes modalFadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        @keyframes modalSlideIn {
             from { 
                 opacity: 0; 
-                transform: translateY(30px); 
+                transform: translateY(30px) scale(0.9); 
             }
             to { 
                 opacity: 1; 
-                transform: translateY(0); 
+                transform: translateY(0) scale(1); 
             }
         }
         
@@ -453,69 +630,170 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        @keyframes float {
-            0% { 
-                transform: translateY(0) rotate(0deg); 
-                opacity: 1; 
-            }
-            50% { 
-                transform: translateY(-50vh) rotate(180deg); 
-                opacity: 0.8; 
-            }
-            100% { 
-                transform: translateY(-100vh) rotate(360deg); 
-                opacity: 0; 
-            }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .g-header__nav.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--color-gray-200);
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
         
-        .animate-in {
-            animation: fadeInUp 0.6s ease-out;
+        .g-header__nav.active .g-header__nav-list {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
         }
         
-        .hamburger.active .bar:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
+        .g-header__nav.active .g-header__nav-link {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            background: rgba(123, 182, 70, 0.05);
         }
         
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid #e9ecef;
         }
         
-        .hamburger.active .bar:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-header p {
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6c757d;
+            cursor: pointer;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .modal-close:hover {
+            background: #f8f9fa;
+            color: #212529;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #212529;
+        }
+        
+        .required {
+            color: #dc3545;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7bb646;
+            box-shadow: 0 0 0 3px rgba(123, 182, 70, 0.1);
+        }
+        
+        .form-actions {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .notification-icon {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .notification-message {
+            flex: 1;
+            line-height: 1.4;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+        
+        .notification-close:hover {
+            opacity: 1;
         }
         
         @media (max-width: 768px) {
-            .nav-menu.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(15, 23, 42, 0.95);
-                backdrop-filter: blur(20px);
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 1rem 0;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            .g-header__nav.active {
+                padding: 1rem;
             }
             
-            .nav-menu.active .nav-item {
-                margin: 0.5rem 0;
+            .modal-content {
+                margin: 1rem;
+                max-height: calc(100vh - 2rem);
             }
             
-            .nav-menu.active .nav-link {
-                padding: 0.75rem 1.5rem;
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .notification {
+                right: 1rem;
+                left: 1rem;
+                max-width: none;
             }
         }
     `;
@@ -523,17 +801,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     
     // ========================================
-    // 初期化完了
+    // Initialize Features
     // ========================================
     
-    // ウェルカムメッセージ
-    setTimeout(() => {
-        if (!localStorage.getItem('thumbnailai-visited')) {
-            showToast('✨ サムネAIへようこそ！高品質なサムネイルを簡単に作成できます。', 4000);
-            localStorage.setItem('thumbnailai-visited', 'true');
-        }
-    }, 1000);
+    // Add loading class to images initially
+    document.querySelectorAll('img').forEach(img => {
+        img.style.filter = 'blur(2px)';
+        img.style.transition = 'filter 0.3s ease';
+    });
     
-    console.log('🎉 サムネAI のJavaScriptが完全に読み込まれました！');
-    console.log('💡 ショートカット: Alt+G でジェネレーター、Alt+P で価格表示');
+    // Show welcome message for first-time visitors
+    if (!localStorage.getItem('sungrove-visited')) {
+        setTimeout(() => {
+            showNotification('🌱 サングローブ株式会社へようこそ！最先端の集客支援をご提案いたします。', 'success', 4000);
+            localStorage.setItem('sungrove-visited', 'true');
+        }, 2000);
+    }
+    
+    console.log('✅ All Sungrove interactive features initialized successfully');
 });
