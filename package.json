@@ -1,0 +1,26 @@
+{
+  "name": "hp",
+  "version": "1.0.0",
+  "description": "本サイトの画像はUnsplashやPixabay等のフリー素材を使用しています。商用利用可・クレジット不要の画像のみを選定しています。",
+  "main": "oka-onsen.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mine0648: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@github.com/mine0648/test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mine0648/test/issues"
+  },
+  "homepage": "https://github.com/mine0648/test#readme",
+  "dependencies": {
+    "playwright": "^1.54.1"
+  }
+}

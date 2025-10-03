@@ -1,0 +1,27 @@
+# Windows
+desktop.ini
+Thumbs.db
+*.lnk
+
+# Tools
+tools/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+venv/
+.env
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:reactbits.dev)",
+      "Bash(gh repo create:*)",
+      "Bash(mkdir:*)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(ls:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git config:*)",
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(mv:*)",
+      "Bash(rmdir:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:noboseru-yujuku.com)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(node:*)",
+      "Bash(npx:*)",
+      "Bash(dir:*)",
+      "Bash(touch:*)"
+    ],
+    "deny": []
+  }
+}
