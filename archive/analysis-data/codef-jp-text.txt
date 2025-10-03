@@ -1,0 +1,143 @@
+Webコーディングの参考になるパーツ集・ギャラリーサイト
+
+found_total = '377idea' , 
+
+update =  '2025-10-03'
+
+lineup
+ranking
+about
+recruit
+.coder
+
+favoirte
+
+# all_categories
+
+view_mode =
+
+PC,スマホ
+
+1
+/
+16
+
+#すべて
+
+#スクロール
+#メインビジュアル
+#ホバー
+#スライダー
+#テキストエフェクト
+#ローディング
+#画面遷移
+#グローバルナビゲーション
+#モーダル
+#ハンバーガーメニュー
+#ギャラリー
+#グラフ
+#ツールチップ
+#アコーディオン
+#テキストナビゲーション
+#スクロールダウン
+#ニューススティッカー
+#ページ内リンク
+#タブ
+詳細を見る
+サイトへ移動
+#テキストエフェクト
+SPA NOIR
+詳細を見る
+サイトへ移動
+#グローバルナビゲーション
+KeukenKastenFabriek
+詳細を見る
+サイトへ移動
+#スライダー
+Ellis Brigham
+詳細を見る
+サイトへ移動
+#グローバルナビゲーション
+九州医学技術専門学校
+credit=
+OVAL様福永あずさ様
+詳細を見る
+サイトへ移動
+#ホバー
+Goldust Spa
+詳細を見る
+サイトへ移動
+#スクロール
+PRO SHOP
+詳細を見る
+サイトへ移動
+#モーダル
+Bondfire Inc.
+詳細を見る
+サイトへ移動
+#テキストナビゲーション
+SuperHeroes
+詳細を見る
+サイトへ移動
+#画面遷移
+Optikka
+詳細を見る
+サイトへ移動
+#モーダル
+Eyekiller
+詳細を見る
+サイトへ移動
+#スライダー
+Downtown Little Rock
+詳細を見る
+サイトへ移動
+#ローディング
+BMA Group Paris
+詳細を見る
+サイトへ移動
+#ホバー
+Hurry Up & Have Fun
+詳細を見る
+サイトへ移動
+#モーダル
+The Kaplans
+詳細を見る
+サイトへ移動
+#ローディング
+MØM – Creative Agency
+詳細を見る
+サイトへ移動
+#ホバー
+Phive
+詳細を見る
+サイトへ移動
+#スライダー
+Gabriel Veres
+詳細を見る
+サイトへ移動
+#モーダル
+Recipes — Hungry Tiger
+詳細を見る
+サイトへ移動
+#画面遷移
+MIUX
+詳細を見る
+サイトへ移動
+#テキストエフェクト
+NTGent
+詳細を見る
+サイトへ移動
+#ギャラリー
+Las manos que cosen
+詳細を見る
+サイトへ移動
+#画面遷移
+StudioNuts®
+詳細を見る
+サイトへ移動
+#スクロール
+FIFA World Cup 2026™ NYNJ
+詳細を見る
+サイトへ移動
+#メインビジュアル
+Ghost Designer

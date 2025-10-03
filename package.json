@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://mine0648: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@github.com/mine0648/test.git"
+    "url": "git+https://github.com/mine0648/test.git"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/mine0648/test#readme",
   "dependencies": {
-    "playwright": "^1.54.1"
+    "playwright": "^1.55.1"
   }
 }
