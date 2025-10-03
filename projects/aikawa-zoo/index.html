@@ -3,192 +3,491 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="相川動物園 - 動物たちとの出会いが待っています。家族みんなで楽しめる動物園です。">
-  <meta name="keywords" content="相川動物園,動物園,動物,家族,子供,観光,体験">
-  <meta name="author" content="相川動物園">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aikawa-zoo.com">
-  <meta property="og:title" content="相川動物園 - 動物たちとの出会いが待っています">
-  <meta property="og:description" content="家族みんなで楽しめる動物園。動物たちとの素敵な出会いが待っています。">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://aikawa-zoo.com">
-  <meta property="twitter:title" content="相川動物園 - 動物たちとの出会いが待っています">
-  <meta property="twitter:description" content="家族みんなで楽しめる動物園。動物たちとの素敵な出会いが待っています。">
-  <meta property="twitter:image" content="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630&q=80">
-
-  <title>相川動物園 - 動物たちとの出会いが待っています</title>
+  <title>相川動物園 - 動物たちとふれあう、学ぶ、楽しむ</title>
+  <meta name="description" content="相川動物園は、家族みんなで楽しめる体験型動物園です。100種類以上の動物たちとのふれあい、エサやり体験、教育プログラムなど、充実したコンテンツをご用意しています。">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
-    <div class="nav-container">
-      <a href="#" class="logo">相川動物園</a>
-      <nav>
-        <ul class="nav-menu">
+    <div class="header-container">
+      <div class="logo-section">
+        <div class="logo">🦁</div>
+        <h1 class="site-title">相川動物園</h1>
+      </div>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="#about">園について</a></li>
           <li><a href="#animals">動物たち</a></li>
-          <li><a href="#experiences">体験</a></li>
+          <li><a href="#experience">体験</a></li>
           <li><a href="#events">イベント</a></li>
-          <li><a href="#access">アクセス</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#guide">ご利用案内</a></li>
         </ul>
       </nav>
+
+      <div class="header-cta">
+        <a href="#tickets" class="btn-primary">チケット購入</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="メニュー">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-subtitle">Aikawa Zoo</p>
-      <h1 class="hero-title">動物たちとの<br>出会いが待っています</h1>
-      <p class="hero-catchphrase">家族みんなで楽しめる、心温まる動物園</p>
-      <a href="#animals" class="cta-button">動物たちを見る</a>
+      <div class="hero-badge">Welcome to Aikawa Zoo</div>
+      <h2 class="hero-title">
+        動物たちと<br>
+        <span class="highlight">心をつなぐ</span>体験を
+      </h2>
+      <p class="hero-description">
+        100種類以上の動物たちが暮らす、体験型動物園。<br>
+        見て、触れて、学ぶ。家族みんなの笑顔が溢れる場所。
+      </p>
+      <div class="hero-actions">
+        <a href="#tickets" class="btn-hero-primary">今すぐチケット購入</a>
+        <a href="#about" class="btn-hero-secondary">もっと詳しく</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">100<span>+</span></div>
+        <div class="stat-label">動物種</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">500<span>+</span></div>
+        <div class="stat-label">飼育数</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">50<span>万人</span></div>
+        <div class="stat-label">年間来園者</div>
+      </div>
     </div>
   </section>
 
-  <section id="animals" class="section animals">
+  <!-- About Section -->
+  <section id="about" class="section about-section">
     <div class="container">
-      <h2 class="section-title">動物たち</h2>
-      <p class="section-subtitle">可愛らしい動物たちがあなたをお待ちしています。それぞれに個性があり、見ているだけで癒されます。</p>
+      <div class="section-header">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title">相川動物園について</h2>
+        <p class="section-description">
+          1985年に開園した相川動物園は、「動物との共生」をテーマに、<br>
+          教育・保護・研究を通じて、人と動物の架け橋となることを使命としています。
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🎓</div>
+          <h3>教育プログラム</h3>
+          <p>動物の生態や環境保護について学べる、充実した教育プログラムを提供しています。</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🌿</div>
+          <h3>保護活動</h3>
+          <p>絶滅危惧種の保護と繁殖に力を入れ、生物多様性の保全に貢献しています。</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🔬</div>
+          <h3>研究活動</h3>
+          <p>動物の行動や生態の研究を行い、より良い飼育環境の実現を目指しています。</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">👨‍👩‍👧‍👦</div>
+          <h3>体験型施設</h3>
+          <p>見るだけでなく、触れ合い体験を通じて動物への理解を深められます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animals Section -->
+  <section id="animals" class="section animals-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Our Animals</span>
+        <h2 class="section-title">人気の動物たち</h2>
+      </div>
+
       <div class="animals-grid">
-        <div class="animal-card">
-          <div class="animal-image" style="background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.8)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">ライオン</div>
+        <div class="animal-card featured">
+          <div class="animal-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="animal-emoji">🦁</div>
+          </div>
           <div class="animal-content">
-            <h3 class="animal-title">ライオン</h3>
-            <p class="animal-desc">百獣の王として知られるライオン。迫力ある姿と美しいたてがみが印象的です。</p>
+            <div class="animal-category">猛獣エリア</div>
+            <h3 class="animal-name">ライオン</h3>
+            <p class="animal-description">百獣の王として知られるライオン。迫力満点のエサやりタイムは必見です。</p>
+            <div class="animal-tags">
+              <span class="tag">人気No.1</span>
+              <span class="tag">エサやり体験</span>
+            </div>
           </div>
         </div>
+
         <div class="animal-card">
-          <div class="animal-image" style="background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.8)), url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">ゾウ</div>
+          <div class="animal-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div class="animal-emoji">🐧</div>
+          </div>
           <div class="animal-content">
-            <h3 class="animal-title">ゾウ</h3>
-            <p class="animal-desc">賢くて優しいゾウたち。長い鼻を器用に使う姿は見ていて楽しいです。</p>
+            <div class="animal-category">水辺エリア</div>
+            <h3 class="animal-name">ペンギン</h3>
+            <p class="animal-description">愛らしい姿で大人気。1日3回のペンギンパレードは子供たちに大人気です。</p>
           </div>
         </div>
+
         <div class="animal-card">
-          <div class="animal-image" style="background: linear-gradient(rgba(76, 175, 80, 0.8), rgba(76, 175, 80, 0.8)), url('https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center;">キリン</div>
+          <div class="animal-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <div class="animal-emoji">🦒</div>
+          </div>
           <div class="animal-content">
-            <h3 class="animal-title">キリン</h3>
-            <p class="animal-desc">長い首が特徴的なキリン。優雅な動きと美しい模様が魅力的です。</p>
+            <div class="animal-category">草食動物エリア</div>
+            <h3 class="animal-name">キリン</h3>
+            <p class="animal-description">首の長さは最大5.5m。高い位置からのエサやり体験ができます。</p>
+          </div>
+        </div>
+
+        <div class="animal-card">
+          <div class="animal-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <div class="animal-emoji">🐘</div>
+          </div>
+          <div class="animal-content">
+            <div class="animal-category">草食動物エリア</div>
+            <h3 class="animal-name">ゾウ</h3>
+            <p class="animal-description">賢く優しい巨大動物。ゾウの背中に乗れる体験も実施中。</p>
+          </div>
+        </div>
+
+        <div class="animal-card">
+          <div class="animal-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+            <div class="animal-emoji">🐒</div>
+          </div>
+          <div class="animal-content">
+            <div class="animal-category">サル山</div>
+            <h3 class="animal-name">ニホンザル</h3>
+            <p class="animal-description">表情豊かで見ていて飽きない。温泉に入る姿は冬の風物詩。</p>
+          </div>
+        </div>
+
+        <div class="animal-card">
+          <div class="animal-image" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
+            <div class="animal-emoji">🦓</div>
+          </div>
+          <div class="animal-content">
+            <div class="animal-category">草食動物エリア</div>
+            <h3 class="animal-name">シマウマ</h3>
+            <p class="animal-description">美しいストライプ模様。実は一頭一頭模様が異なります。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#" class="btn-secondary">すべての動物を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Experience</span>
+        <h2 class="section-title">体験プログラム</h2>
+        <p class="section-description">
+          動物たちとの距離がぐっと近づく、充実の体験プログラム
+        </p>
+      </div>
+
+      <div class="experience-grid">
+        <div class="experience-card large">
+          <div class="experience-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="experience-icon">🍖</div>
+          </div>
+          <div class="experience-content">
+            <div class="experience-badge">人気No.1</div>
+            <h3>エサやり体験</h3>
+            <p>キリン、ゾウ、カピバラなど、様々な動物たちに直接エサをあげることができます。</p>
+            <ul class="experience-features">
+              <li>✓ 1日5回開催</li>
+              <li>✓ 所要時間: 30分</li>
+              <li>✓ 料金: 500円</li>
+            </ul>
+            <a href="#" class="btn-experience">詳細を見る</a>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="experience-icon">🐾</div>
+          </div>
+          <div class="experience-content">
+            <h3>ふれあい広場</h3>
+            <p>ウサギ、モルモット、ヒヨコなど小動物と自由にふれあえます。</p>
+            <a href="#" class="btn-text">詳細 →</a>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div class="experience-icon">📚</div>
+          </div>
+          <div class="experience-content">
+            <h3>飼育員トーク</h3>
+            <p>プロの飼育員が動物の生態や裏話を楽しく解説します。</p>
+            <a href="#" class="btn-text">詳細 →</a>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="experience-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <div class="experience-icon">🎪</div>
+          </div>
+          <div class="experience-content">
+            <h3>アニマルショー</h3>
+            <p>動物たちの能力を活かしたエンターテイメントショー。</p>
+            <a href="#" class="btn-text">詳細 →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="experiences" class="section">
+  <!-- Events Section -->
+  <section id="events" class="section events-section">
     <div class="container">
-      <h2 class="section-title">体験</h2>
-      <p class="section-subtitle">動物たちとの特別な体験をお楽しみください。思い出に残る素敵な時間を過ごせます。</p>
-      <div class="experiences-grid">
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="動物のエサやり体験" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="experience-icon">🍎</div>
-          <h3 class="experience-title">エサやり体験</h3>
-          <p class="experience-desc">動物たちに直接エサをあげることができます。間近で見る動物たちの表情は必見です。</p>
-        </div>
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="動物との写真撮影" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="experience-icon">📸</div>
-          <h3 class="experience-title">写真撮影</h3>
-          <p class="experience-desc">可愛い動物たちと一緒に記念写真を撮影できます。素敵な思い出を作りましょう。</p>
-        </div>
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1516627145497-ae4096d4524d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="動物の解説ツアー" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="experience-icon">🎓</div>
-          <h3 class="experience-title">解説ツアー</h3>
-          <p class="experience-desc">専門スタッフによる動物の解説ツアー。動物の生態や特徴を詳しく学べます。</p>
-        </div>
-        <div class="experience-card">
-          <img src="https://images.unsplash.com/photo-1574895883440-de4d8a2c0e4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80" alt="動物とのふれあい" style="width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem;">
-          <div class="experience-icon">🤝</div>
-          <h3 class="experience-title">ふれあい体験</h3>
-          <p class="experience-desc">優しい動物たちと直接触れ合えるコーナー。子どもたちに大人気の体験です。</p>
-        </div>
+      <div class="section-header">
+        <span class="section-label">Events</span>
+        <h2 class="section-title">イベント情報</h2>
       </div>
-    </div>
-  </section>
 
-  <section id="events" class="section events">
-    <div class="container">
-      <h2 class="section-title">イベント</h2>
-      <p class="section-subtitle">季節ごとの楽しいイベントを開催しています。ご家族みんなでお楽しみください。</p>
       <div class="events-grid">
-        <article class="event-card">
-          <div class="event-image" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80'); background-size: cover; background-position: center;">夏祭り</div>
+        <article class="event-card current">
+          <div class="event-badge">開催中</div>
+          <div class="event-date">
+            <span class="month">10</span>
+            <span class="day">1-31</span>
+          </div>
           <div class="event-content">
-            <p class="event-date">2024.07.15 - 2024.08.31</p>
-            <h3 class="event-title">夏の動物園祭り</h3>
-            <p class="event-excerpt">夏限定の特別イベント。夜の動物園見学や水遊びコーナーなど、涼しく楽しめるプログラムが盛りだくさん...</p>
+            <h3>ハロウィンナイトZOO</h3>
+            <p>夜の動物園を特別公開！仮装してきたお子様にはプレゼントも。</p>
+            <div class="event-meta">
+              <span>🕐 17:00-20:00</span>
+              <span>📍 全エリア</span>
+            </div>
           </div>
         </article>
+
         <article class="event-card">
-          <div class="event-image" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80'); background-size: cover; background-position: center;">秋の紅葉</div>
+          <div class="event-date">
+            <span class="month">11</span>
+            <span class="day">15</span>
+          </div>
           <div class="event-content">
-            <p class="event-date">2024.09.01 - 2024.11.30</p>
-            <h3 class="event-title">秋の紅葉と動物たち</h3>
-            <p class="event-excerpt">美しい紅葉の中で動物たちを観察できる特別な季節。カメラ撮影会やスケッチ大会も開催...</p>
+            <h3>赤ちゃん動物公開</h3>
+            <p>今年生まれた赤ちゃん動物たちを一堂に公開します。</p>
+            <div class="event-meta">
+              <span>🕐 10:00-16:00</span>
+              <span>📍 ふれあい広場</span>
+            </div>
           </div>
         </article>
+
         <article class="event-card">
-          <div class="event-image" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=200&q=80'); background-size: cover; background-position: center;">冬のイルミネーション</div>
+          <div class="event-date">
+            <span class="month">12</span>
+            <span class="day">24-25</span>
+          </div>
           <div class="event-content">
-            <p class="event-date">2024.12.01 - 2025.02.28</p>
-            <h3 class="event-title">冬のイルミネーション</h3>
-            <p class="event-excerpt">園内が美しいイルミネーションで彩られます。温かい飲み物やグッズ販売も行います...</p>
+            <h3>クリスマススペシャル</h3>
+            <p>サンタ姿の飼育員がプレゼント配布。特別エサやり体験も。</p>
+            <div class="event-meta">
+              <span>🕐 9:00-17:00</span>
+              <span>📍 全エリア</span>
+            </div>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="access" class="section">
+  <!-- Guide Section -->
+  <section id="guide" class="section guide-section">
     <div class="container">
-      <h2 class="section-title">アクセス</h2>
-      <div class="access-info">
-        <div class="access-details">
-          <h3>相川動物園</h3>
-          <p>〒123-4567 相川市動物園町1-1</p>
-          <p>TEL: 012-345-6789</p>
-          <p>営業時間: 9:00 - 17:00</p>
-          <p>定休日: 月曜日（祝日の場合は翌日）</p>
-          <p>入園料: 大人1,200円、子ども600円</p>
+      <div class="section-header">
+        <span class="section-label">Visitor Guide</span>
+        <h2 class="section-title">ご利用案内</h2>
+      </div>
+
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-icon-wrapper">
+            <div class="guide-icon">🎫</div>
+          </div>
+          <h3>入園料金</h3>
+          <div class="price-list">
+            <div class="price-item">
+              <span class="price-label">大人（高校生以上）</span>
+              <span class="price-value">2,000円</span>
+            </div>
+            <div class="price-item">
+              <span class="price-label">中学生</span>
+              <span class="price-value">1,500円</span>
+            </div>
+            <div class="price-item">
+              <span class="price-label">小学生</span>
+              <span class="price-value">1,000円</span>
+            </div>
+            <div class="price-item">
+              <span class="price-label">幼児（3歳以上）</span>
+              <span class="price-value">500円</span>
+            </div>
+          </div>
+          <div class="guide-note">※3歳未満は無料</div>
         </div>
-        <div class="access-transport">
-          <h3>交通アクセス</h3>
-          <p>電車: 相川線「動物園前駅」より徒歩5分</p>
-          <p>バス: 市営バス「動物園入口」より徒歩3分</p>
-          <p>車: 相川ICより約10分（駐車場200台完備）</p>
+
+        <div class="guide-card">
+          <div class="guide-icon-wrapper">
+            <div class="guide-icon">🕐</div>
+          </div>
+          <h3>開園時間</h3>
+          <div class="hours-list">
+            <div class="hours-item">
+              <span class="hours-season">春・夏・秋（3月〜11月）</span>
+              <span class="hours-time">9:00 - 17:00</span>
+            </div>
+            <div class="hours-item">
+              <span class="hours-season">冬（12月〜2月）</span>
+              <span class="hours-time">9:30 - 16:30</span>
+            </div>
+          </div>
+          <div class="guide-note">※最終入園は閉園30分前</div>
         </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-wrapper">
+            <div class="guide-icon">📅</div>
+          </div>
+          <h3>休園日</h3>
+          <ul class="closed-list">
+            <li>毎週水曜日（祝日の場合は翌日）</li>
+            <li>年末年始（12月29日〜1月1日）</li>
+          </ul>
+          <div class="guide-note">※春休み・夏休み期間は無休</div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-icon-wrapper">
+            <div class="guide-icon">🚗</div>
+          </div>
+          <h3>アクセス</h3>
+          <div class="access-info">
+            <div class="access-item">
+              <strong>電車でお越しの方</strong>
+              <p>JR相川駅から徒歩15分<br>無料シャトルバスも運行中</p>
+            </div>
+            <div class="access-item">
+              <strong>お車でお越しの方</strong>
+              <p>相川ICから車で10分<br>駐車場完備（500台/無料）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta">
+        <a href="#tickets" class="btn-primary-large">オンラインチケット購入</a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section contact">
-    <div class="container">
-      <h2 class="section-title">お問い合わせ</h2>
-      <div class="contact-content">
-        <p>ご質問やご不明な点がございましたら、<br>お気軽にお問い合わせください。</p>
-        <a href="mailto:info@aikawa-zoo.com" class="contact-button">お問い合わせ</a>
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>動物たちが待っています</h2>
+      <p>今すぐチケットを購入して、忘れられない1日を過ごしませんか？</p>
+      <div class="cta-buttons">
+        <a href="#tickets" class="btn-cta-primary">チケット購入</a>
+        <a href="#contact" class="btn-cta-secondary">お問い合わせ</a>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <p>&copy; 2024 相川動物園. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div class="logo">🦁</div>
+            <h3>相川動物園</h3>
+          </div>
+          <p class="footer-description">
+            動物たちとの出会いを通じて、<br>
+            生命の尊さと自然の大切さを<br>
+            伝え続けます。
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="YouTube">📺</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>園内情報</h4>
+          <ul class="footer-links">
+            <li><a href="#animals">動物たち</a></li>
+            <li><a href="#experience">体験プログラム</a></li>
+            <li><a href="#events">イベント</a></li>
+            <li><a href="#">園内マップ</a></li>
+            <li><a href="#">レストラン・ショップ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>ご利用案内</h4>
+          <ul class="footer-links">
+            <li><a href="#guide">料金・営業時間</a></li>
+            <li><a href="#">アクセス</a></li>
+            <li><a href="#">団体予約</a></li>
+            <li><a href="#">よくある質問</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>お問い合わせ</h4>
+          <div class="footer-contact">
+            <p>📞 0120-XXX-XXXX</p>
+            <p>📧 info@aikawa-zoo.com</p>
+            <p>📍 〒XXX-XXXX<br>○○県○○市相川1-2-3</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 相川動物園 All Rights Reserved.</p>
+        <div class="footer-legal">
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">利用規約</a>
+          <a href="#">サイトマップ</a>
+        </div>
+      </div>
     </div>
   </footer>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
